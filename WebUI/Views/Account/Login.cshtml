@@ -1,0 +1,42 @@
+﻿@using WebUI.Models
+@model AccountViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Temp/_MyLogin.cshtml";
+}
+
+<div class="login">
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login", role = "form" }))
+{@Html.AntiForgeryToken()
+    <div class="container">
+        <h3>Login Here</h3>
+        <p class="est">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        <div class="login-form-grids">
+            <form>
+                
+                @Html.LabelFor(m => m.Username, new { @class = "test-info" })
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                
+                  @Html.ValidationMessageFor(m => m.Username, "")
+                <div class="clearfix"></div>
+                @Html.LabelFor(m => m.Password, new { @class = "test-info" })
+                
+               @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "")
+                <div class="clearfix"></div>
+                <div class="forgot">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <h4>For New People</h4>
+        <p><a href="register.html">@Html.ActionLink("Register as a new user", "Register")Register Here</a> (or) go to <a href="index.html">Home Page<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+    </div>
+}
+</div>
+

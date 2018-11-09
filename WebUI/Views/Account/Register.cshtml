@@ -1,0 +1,52 @@
+﻿@using Domain
+@using WebUI.Controllers
+@model WebUI.Models.AccountViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Temp/_MyRegister.cshtml";
+}
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form-grids", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+        <h6>Register information</h6>
+        <form>
+            
+            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+       
+
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+
+           
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+           
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })   
+                <div class="register-check-box">
+                    <div class="check">
+                        @Html.LabelFor(m => m.AccountType, new { @class = "checkbox" })
+                        <div class="check">
+                            @Html.Label("Patient: ") @Html.RadioButtonFor(m => m.AccountType, EAccountType.Patient, new { @checked = "checked" })
+                        </div>
+                        <div class="check">
+                        
+                                @Html.Label("Docotr: ") @Html.RadioButtonFor(m => m.AccountType, EAccountType.Doctor)
+                            </div>
+                        </div>
+
+                </div>
+                <input type="submit" value="Register">
+</form>
+    }
+    
+
+   
