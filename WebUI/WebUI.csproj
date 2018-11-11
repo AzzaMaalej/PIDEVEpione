@@ -439,7 +439,6 @@
     <Content Include="Template\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Temp\_MyLogin.cshtml" />
     <Content Include="Views\Temp\_MyRegister.cshtml" />
-    <Content Include="Views\Shared\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
