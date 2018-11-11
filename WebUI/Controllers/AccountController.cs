@@ -71,7 +71,7 @@ namespace WebUI.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        public static String UserCoUserName;
         //
         // POST: /Account/Login
         [HttpPost]
@@ -90,10 +90,13 @@ namespace WebUI.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    // ModelState.AddModelError("", "Connected.");
-                    //return RedirectToLocal(returnUrl);
-                    //return View(model);
-                    return RedirectToAction("Index", "Home");
+                    { // ModelState.AddModelError("", "Connected.");
+                      //return RedirectToLocal(returnUrl);
+                      //return View(model);
+
+                        UserCoUserName = model.Username;
+                        return RedirectToAction("Index", "Home");
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -157,8 +160,9 @@ namespace WebUI.Controllers
                         {
                             // create new volunteer and map form values to the instance
                             Patient v = new Patient { UserName = model.UserName, Email = model.Email };
+                            v.ImageName = "default-user-image.png";
                             result = await UserManager.CreateAsync(v, model.Password);
-
+                           
                             // Add volunteer role to the new User
                             if (result.Succeeded)
                             {
@@ -177,8 +181,9 @@ namespace WebUI.Controllers
                         {
                             // create new Ngo and map form values to the instance
                             Doctor ngo = new Doctor { UserName = model.UserName, Email = model.Email };
+                            ngo.ImageName = "default-user-image.png";
                             result = await UserManager.CreateAsync(ngo, model.Password);
-
+                           
                             // Add Ngo role to the new User
                             if (result.Succeeded)
                             {
