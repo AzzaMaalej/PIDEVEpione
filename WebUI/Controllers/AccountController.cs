@@ -13,6 +13,7 @@ using ServicePattern;
 using Domain;
 using Service.Identity;
 using static WebUI.Models.AccountViewModels;
+using System.IO;
 
 namespace WebUI.Controllers
 {
@@ -142,21 +143,36 @@ namespace WebUI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(AccountViewModels.RegisterViewModel model)
+        public async Task<ActionResult> Register(AccountViewModels.RegisterViewModel model, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
 
                 IdentityResult result;
+                model.ImageName = Image.FileName;
+
 
                 // Switch on Selected Account type
                 switch (model.AccountType)
                 {
                     // Volunteer Account type selected:
-                    case Domain.EAccountType.Patient:
+                    case EAccountType.Patient:
                         {
                             // create new volunteer and map form values to the instance
-                            Patient v = new Patient { UserName = model.UserName, Email = model.Email };
+                            Patient v = new Patient {
+                                UserName = (model.UserName),
+                                Email = model.Email,
+                                Address = model.Address,
+                                FirstName = model.FirstName,
+                                LastName = model.LastName,
+                                BirthDate = model.BirthDate,
+                                ImageName = model.ImageName,
+                                PhoneNumber = model.PhoneNumber,
+                                Gender = model.Gender,
+                            };
+
+                            var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
+                            Image.SaveAs(path);
                             result = await UserManager.CreateAsync(v, model.Password);
 
                             // Add volunteer role to the new User
@@ -176,14 +192,29 @@ namespace WebUI.Controllers
                     case EAccountType.Doctor:
                         {
                             // create new Ngo and map form values to the instance
-                            Doctor ngo = new Doctor { UserName = model.UserName, Email = model.Email };
-                            result = await UserManager.CreateAsync(ngo, model.Password);
+                            Doctor doc = new Doctor {
+                                UserName = model.UserName,
+                                Email = model.Email,
+                                Address = model.Address,
+                                FirstName = model.FirstName,
+                                LastName = model.LastName,
+                                BirthDate = model.BirthDate,
+                                ImageName = model.ImageName,
+                                PhoneNumber = model.PhoneNumber,
+                                Gender = model.Gender,
+                                Speciality = model.Speciality
+
+                            };
+                            var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
+                            Image.SaveAs(path);
+
+                            result = await UserManager.CreateAsync(doc, model.Password);
 
                             // Add Ngo role to the new User
                             if (result.Succeeded)
                             {
                                 //     UserManager.AddToRole(ngo.Id, EAccountType.Doctor.ToString());
-                                await SignInManager.SignInAsync(ngo, isPersistent: false, rememberBrowser: false);
+                                await SignInManager.SignInAsync(doc, isPersistent: false, rememberBrowser: false);
 
                                 return RedirectToAction("Index", "Home");
                             }

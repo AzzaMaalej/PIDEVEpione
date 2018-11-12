@@ -13,14 +13,16 @@ namespace Domain
         Dentist,
         Dermatologist,
         Gastroenterologist,
-        General,
+        Generalist,
         Gynecologist,
+        Neurologist,
+        Ophthalmologist,
         Pediatrician,
         Therapist
     };
     public class Doctor : User
     {
-        public SpecialityEnum Speciality { get; set; }
+        public SpecialityEnum Speciality { get; set; } 
         public virtual ICollection<MedicalPath> MedicalPaths { get; set; }
         public virtual ICollection<Chat> Conversations { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,7 +13,14 @@ namespace WebUI.Models
             [Required]
             [Display(Name = "Username")]
             public string UserName { get; set; }
+            public String FirstName { get; set; }
+            public String LastName { get; set; }
+            [DataType(DataType.Date)]
+            public DateTime BirthDate { get; set; }
+            public String Address { get; set; }
+            public Gender Gender { get; set; }
 
+            public String ImageName { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -27,10 +35,12 @@ namespace WebUI.Models
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-
+            public string PhoneNumber { get; set; }
             [Required]
             [Display(Name = "Account Type")]
             public EAccountType AccountType { get; set; }
+            [Display(Name = "Speciality")]
+            public SpecialityEnum Speciality { get; set; }
         }
 
         public class LoginViewModel
