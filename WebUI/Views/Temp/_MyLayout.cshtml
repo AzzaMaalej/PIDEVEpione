@@ -4,7 +4,7 @@
         <title>@Page.Title</title>
         @RenderSection("head", required: false)
        
-            <title>Prevention a Medical Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+            <title>Online Medical Appointment :: Uniteam</title>
             <link href=@Url.Content("/Template/css/pignose.layerslider.css") rel="stylesheet" type="text/css" media="all" />
             <link href=@Url.Content("/Template/css/bootstrap-3.1.1.min.css") rel='stylesheet' type='text/css' />
             <link href=@Url.Content("/Template/css/style.css" ) rel="stylesheet" type="text/css" media="all" />
@@ -73,7 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="contact-info">
                         <ul>
                             <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+0123 384 920</li>
-                            <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">contact@yourdomain.com</a></li>
+                            <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">uniteam@esprit.tn</a></li>
                         </ul>
                     </div>
                     <!-- Large modal -->
@@ -155,10 +155,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book Test<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appointments<span class="caret"></span></a>
                                 <ul class="dropdown-menu drop_menu" role="menu">
-                                    <li><a href="book-a-test.html">Book a Test</a></li>
-                                    <li><a href="test-list.html">Test Menu</a></li>
+                                    <li><a href=@Url.Content("/Appointment/Create")>New Appointment</a></li>
+                                    <li><a href=@Url.Content("/Appointment/Index")>My Appointments</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
