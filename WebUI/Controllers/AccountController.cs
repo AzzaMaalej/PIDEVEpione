@@ -72,6 +72,7 @@ namespace WebUI.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
         public static String UserCoUserName;
         //
         // POST: /Account/Login
@@ -162,7 +163,7 @@ namespace WebUI.Controllers
                     case EAccountType.Patient:
                         {
                             // create new volunteer and map form values to the instance
-<<<<<<< HEAD
+
                             Patient v = new Patient {
                                 UserName = (model.UserName),
                                 Email = model.Email,
@@ -175,12 +176,12 @@ namespace WebUI.Controllers
                                 Gender = model.Gender,
                             };
 
+                            if (v.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
+
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
-=======
-                            Patient v = new Patient { UserName = model.UserName, Email = model.Email };
-                            v.ImageName = "default-user-image.png";
->>>>>>> 90422a301ee85160567882e50bc20c9e08b4a384
+
+
                             result = await UserManager.CreateAsync(v, model.Password);
                            
                             // Add volunteer role to the new User
@@ -200,8 +201,8 @@ namespace WebUI.Controllers
                     case EAccountType.Doctor:
                         {
                             // create new Ngo and map form values to the instance
-<<<<<<< HEAD
-                            Doctor doc = new Doctor {
+
+                            Doctor ngo = new Doctor {
                                 UserName = model.UserName,
                                 Email = model.Email,
                                 Address = model.Address,
@@ -214,22 +215,19 @@ namespace WebUI.Controllers
                                 Speciality = model.Speciality
 
                             };
+                            if (ngo.ImageName == null) { ngo.ImageName = "default-user-image.png"; }
+
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
 
-                            result = await UserManager.CreateAsync(doc, model.Password);
-
-=======
-                            Doctor ngo = new Doctor { UserName = model.UserName, Email = model.Email };
-                            ngo.ImageName = "default-user-image.png";
                             result = await UserManager.CreateAsync(ngo, model.Password);
                            
->>>>>>> 90422a301ee85160567882e50bc20c9e08b4a384
+
                             // Add Ngo role to the new User
                             if (result.Succeeded)
                             {
                                 //     UserManager.AddToRole(ngo.Id, EAccountType.Doctor.ToString());
-                                await SignInManager.SignInAsync(doc, isPersistent: false, rememberBrowser: false);
+                                await SignInManager.SignInAsync(ngo, isPersistent: false, rememberBrowser: false);
 
                                 return RedirectToAction("Index", "Home");
                             }
