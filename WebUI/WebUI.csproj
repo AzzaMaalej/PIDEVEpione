@@ -946,6 +946,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\EspaceMedecin\_LayoutForCalender.cshtml" />
     <Content Include="Views\Calender\Index.cshtml" />
+    <Content Include="Views\Medecin\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

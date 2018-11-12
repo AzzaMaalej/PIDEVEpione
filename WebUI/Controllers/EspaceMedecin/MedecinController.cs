@@ -1,7 +1,9 @@
 ﻿using Data;
 using Domain;
+using Newtonsoft.Json.Linq;
 using Service.EspaceMedecin;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -20,7 +22,12 @@ namespace WebUI.Controllers.EspaceMedecin
         // GET: Medecin
         public ActionResult Index()
         {
-
+            //var medecin= new IEnumerable<Doctor>();
+            if (AccountController.UserCoUserName == null)
+            {
+               var  medecin2 = sm.GetMany().ToList();
+                return View(medecin2);
+            }
              var medecin = sm.getDoctorByUserName(AccountController.UserCoUserName);
             //if (medecin.First().ImageName == null)
             //{
@@ -30,11 +37,11 @@ namespace WebUI.Controllers.EspaceMedecin
         }
 
         // GET: Medecin/Details/5
-        //public ActionResult Details(int id)
-        //{
-            
-        //    return View();
-        //}
+        public ActionResult Details(string id)
+        {
+            var medecin = sm.GetById(id);
+            return View(medecin);
+        }
 
         // GET: Medecin/Create
         //public ActionResult Create()
