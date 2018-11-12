@@ -78,7 +78,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <!-- Large modal -->
             <div class="selectpackage">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Packages</button>
+                @*<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Packages</button>*@
+                @Html.Partial("_LoginPartial")
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -120,9 +121,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-                <script>
+                @*<script>
 				$('#myModal').modal('');
-                </script>
+                </script>*@
             </div>
             <div class="clearfix"></div>
         </div>
@@ -209,7 +210,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div>@RenderBody()</div>
             </div>
         </div>
-        </div>
         <!-- //login -->
         <!--- /login ---->
     </section>
@@ -240,7 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <input type="text" name="name" id="name" placeholder="Name" required="">
                                     <input type="text" name="email id" id="Email id" placeholder="Email id" required="">
                                     <input type="text" name="mobile number" id="Mobile Number" placeholder="Mobile Number" required="">
-                                    <input class="date" id="datepicker" type="text" value="Appointment date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Appointment date';}" required=>
+                                    <input class="date" id="datepicker" type="text" value="Appointment date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Appointment date';}" required>
                                     <textarea type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Message...';}" required="">Enter Message...</textarea>
                                     <input type="submit" onclick="myFunction()" value="Submit Now">
                                 </form>

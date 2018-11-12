@@ -9,10 +9,10 @@ namespace Data
     public class PiContext : IdentityDbContext<User>
     {
         
-        public PiContext() : base("Name=PIDB")
+        public PiContext() : base("PIDB")
         {
             Database.SetInitializer(new ContexInit());
-         }
+        }
 
 
         public DbSet<Appointment> Appointments { get; set; }
@@ -20,6 +20,7 @@ namespace Data
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Repport> Repports { get; set; }
         public DbSet<Rate> Ratings { get; set; }
+        public DbSet<Disponibility> Disponibilities { get; set; }
 
 
         public static PiContext Create()

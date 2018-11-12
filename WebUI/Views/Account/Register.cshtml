@@ -1,4 +1,6 @@
-﻿@using Domain
+﻿Add header footer appointment and newsletter partial views
+
+@using Domain
 @using WebUI.Controllers
 @model WebUI.Models.AccountViewModels.RegisterViewModel
 @{
@@ -6,47 +8,281 @@
     Layout = "~/Views/Temp/_MyRegister.cshtml";
 }
 
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form-grids", role = "form" }))
-    {
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form-grids", role = "form", enctype = "multipart/form-data" }))
+{
 
-        @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-        <h6>Register information</h6>
+    <h6>Register information</h6>
         <form>
-            
+
             @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        
+
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-       
+
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+
+
+            @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+
+            @Html.EditorFor(m => m.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger" })<br />
+
+            @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+
+
+            <div class="check">
+                @Html.LabelFor(m => m.Gender, new { @class = "checkbox" })
+                <table cellpadding="3" cellspacing="2" border="0" style="border:hidden">
+                    <tr style="border:hidden">
+                        <td style="border:hidden">
+
+                            <div class="check">
+                                @Html.Label("Female: ")
+                            </div>
+                        </td>
+                        <td style="border:hidden">
+
+                            <div class="check">
+                                @Html.RadioButtonFor(m => m.Gender, Gender.Female, new { @checked = "checked" })
+                            </div>
+                        </td>
+                        <td style="border:hidden">
+                            <div class="check">
+                                @Html.Label("Male: ")
+                            </div>
+
+                        </td>
+                        <td style="border:hidden">
+                            <div class="check">
+                                @Html.RadioButtonFor(m => m.Gender, Gender.Male)
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+            </div><br />
+
+
+            @Html.LabelFor(m => m.ImageName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 form-control" style="margin-bottom:20px;">
+                @Html.TextBox("Image", null, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.ImageName)
+            </div><br />
 
             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
 
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
 
 
-           
             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-           
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })   
-                <div class="register-check-box">
+
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            <div class="register-check-box">
+                <div class="check">
+                    @Html.LabelFor(m => m.AccountType, new { @class = "checkbox" })
                     <div class="check">
-                        @Html.LabelFor(m => m.AccountType, new { @class = "checkbox" })
-                        <div class="check">
-                            @Html.Label("Patient: ") @Html.RadioButtonFor(m => m.AccountType, EAccountType.Patient, new { @checked = "checked" })
-                        </div>
-                        <div class="check">
-                        
-                                @Html.Label("Docotr: ") @Html.RadioButtonFor(m => m.AccountType, EAccountType.Doctor)
-                            </div>
-                        </div>
 
+                        <table cellpadding="3" cellspacing="2" border="0" style="border:hidden">
+                            <tr style="border:hidden">
+                                <td style="border:hidden">
+
+                                    <div class="check">
+                                        @Html.Label("Patient: ")
+                                    </div>
+                                </td>
+                                <td style="border:hidden">
+
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.AccountType, EAccountType.Patient, new { @checked = "checked", @id = "radioos" })
+                                    </div>
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Doctor: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.AccountType, EAccountType.Doctor, new { @id = "radioo" })
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div><br />
+
+                    <div class="check" style="display:none" id="hey">
+                        @Html.LabelFor(m => m.Speciality, new { @class = "checkbox" })
+                        <table cellpadding="3" cellspacing="2" border="0" style="border:hidden">
+                            <tr style="border:hidden">
+                                <td style="border:hidden">
+
+                                    <div class="check">
+                                        @Html.Label("Cardiologist: ")
+                                    </div>
+                                </td>
+                                <td style="border:hidden">
+
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Cardiologist, new { @checked = "checked" })
+                                    </div>
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Dentist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Dentist)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr style="border:hidden">
+                                <td style="border:hidden">
+
+                                    <div class="check">
+                                        @Html.Label("Dermatologist: ")
+                                    </div>
+                                </td>
+                                <td style="border:hidden">
+
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Dermatologist)
+                                    </div>
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Gastroenterologist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Gastroenterologist)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr style="border:hidden">
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Generalist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Generalist)
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Gynecologist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Gynecologist)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr style="border:hidden">
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Neurologist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Neurologist)
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Ophthalmologist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Ophthalmologist)
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr style="border:hidden">
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Pediatrician: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Pediatrician)
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.Label("Therapist: ")
+                                    </div>
+
+                                </td>
+                                <td style="border:hidden">
+                                    <div class="check">
+                                        @Html.RadioButtonFor(m => m.Speciality, SpecialityEnum.Therapist)
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <input type="submit" value="Register">
-</form>
-    }
-    
 
-   
+            </div>
+
+            <script>
+                    $("#radioo").click(function(){
+                        if ($(this).is(':checked')) {
+                            $("#hey").show();
+                        }
+                    });
+                    $("#radioos").click(function () {
+                        if ($(this).is(':checked')) {
+                            $("#hey").hide();
+                        }
+                    });
+            </script>
+
+            <input type="submit" value="Register">
+        </form>
+}
+
+
