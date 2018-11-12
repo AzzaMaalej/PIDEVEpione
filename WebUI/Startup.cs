@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Data;
+using Domain;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
@@ -41,8 +44,47 @@ namespace WebUI
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+            AddUsersAndRoles();
+
         }
 
+        private void AddUsersAndRoles()
+        {
+
+            PiContext context = new PiContext();
+            var UserManager = new UserManager<User>(new UserStore<User>(context));
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            if (!RoleManager.RoleExists("Doctor"))
+            {
+                var roleresult = RoleManager.Create(new IdentityRole("Doctor"));
+            }
+
+            if (!RoleManager.RoleExists("Patient"))
+            {
+                var roleresult = RoleManager.Create(new IdentityRole("Patient"));
+            }
+
+
+            if (!RoleManager.RoleExists("Admin"))
+            {
+                var roleresult = RoleManager.Create(new IdentityRole("Admin"));
+            }
+
+            var user = new User
+            {
+                UserName = "admin",
+                Email = "admin@yahoo.com"
+            };
+
+            string pwd = "Administration1234$";
+            var adminResult = UserManager.Create(user, pwd);
+            if (adminResult.Succeeded)
+            {
+                UserManager.AddToRole(user.Id, "Admin");
+            }
+
+        }
 
     }
 }
