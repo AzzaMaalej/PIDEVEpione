@@ -3249,6 +3249,23 @@
     <Content Include="Template\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Temp\_MyLogin.cshtml" />
     <Content Include="Views\Temp\_MyRegister.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\EspaceMedecin\_LayoutMedecin.cshtml" />
+    <Content Include="Views\Medecin\Edit.cshtml" />
+    <Content Include="Views\Medecin\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\EspaceMedecin\_LayoutForCalender.cshtml" />
+    <Content Include="Views\Calender\Index.cshtml" />
+    <Content Include="Views\Medecin\Details.cshtml" />
+=======
     <Content Include="Template\assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.eot" />
     <Content Include="Template\assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.ttf" />
     <Content Include="Template\assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.woff" />
@@ -3265,6 +3282,7 @@
     <Content Include="Views\Analytics\Layouts\_IndexLayout.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Analytics\Index.cshtml" />
+>>>>>>> cb3c4869be08bea2083749b2b65475f98ab56905
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
