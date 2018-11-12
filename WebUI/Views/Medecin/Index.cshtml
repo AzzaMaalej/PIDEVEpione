@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Domain.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/EspaceMedecin/_LayoutMedecin.cshtml";
+}
+
+
+@foreach (var item in Model)
+
+{
+    using (Html.BeginForm("Delete", "Medecin", new { id = item.Id }))
+    {
+        <div class="happy-patients-grid-right">
+            @{string path = "~/Content/UploadAzza/" + @item.ImageName;}
+
+            <img src="@Url.Content(path)" />
+        </div>
+
+        <div class="clearfix"></div>
+        <label class="test-info">
+            UserName: @Html.DisplayFor(modelItem => item.UserName)
+        </label>
+
+        <div class="clearfix"></div>
+        <label class="test-info">
+            First Name: @Html.DisplayFor(modelItem => item.FirstName)
+        </label>
+        <div class="clearfix"></div>
+
+        <label class="test-info">
+            Last Name: @Html.DisplayFor(modelItem => item.LastName)
+        </label>
+        <div class="clearfix"></div>
+
+        <label class="test-info">
+            Gender: @Html.DisplayFor(modelItem => item.Gender)
+        </label>
+        <div class="clearfix"></div>
+
+        <label class="test-info">
+            Speciality: @Html.DisplayFor(modelItem => item.Speciality)
+        </label>
+        <div class="clearfix"></div>
+        <label class="test-info">Email: @Html.DisplayFor(modelItem => item.Email)</label>
+        <div class="clearfix"></div>
+        <label class="test-info">Phone number: @Html.DisplayFor(modelItem => item.PhoneNumber)</label>
+        <div class="clearfix"></div>
+
+        <label class="test-info">
+            Birthdate: @Html.DisplayFor(modelItem => item.BirthDate)
+        </label>
+
+        <div class="clearfix"></div>
+                    <label class="test-info">
+                        Address: @Html.DisplayFor(modelItem => item.Address)
+                    </label>
+
+
+
+                            <div class="clearfix"></div>
+
+                            <h3>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-default_2" })
+                                
+                                <input  type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete your account?');" />
+                                  </h3>
+
+                    }
+                }

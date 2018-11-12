@@ -20,6 +20,7 @@ namespace Data
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Repport> Repports { get; set; }
         public DbSet<Rate> Ratings { get; set; }
+        public DbSet<Disponibility> Disponibilities { get; set; }
 
 
         public static PiContext Create()

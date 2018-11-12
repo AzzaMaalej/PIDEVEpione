@@ -72,7 +72,7 @@ namespace WebUI.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        public static String UserCoUserName;
         //
         // POST: /Account/Login
         [HttpPost]
@@ -91,10 +91,13 @@ namespace WebUI.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    // ModelState.AddModelError("", "Connected.");
-                    //return RedirectToLocal(returnUrl);
-                    //return View(model);
-                    return RedirectToAction("Index", "Home");
+                    { // ModelState.AddModelError("", "Connected.");
+                      //return RedirectToLocal(returnUrl);
+                      //return View(model);
+
+                        UserCoUserName = model.Username;
+                        return RedirectToAction("Index", "Home");
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -159,6 +162,7 @@ namespace WebUI.Controllers
                     case EAccountType.Patient:
                         {
                             // create new volunteer and map form values to the instance
+<<<<<<< HEAD
                             Patient v = new Patient {
                                 UserName = (model.UserName),
                                 Email = model.Email,
@@ -173,8 +177,12 @@ namespace WebUI.Controllers
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
+=======
+                            Patient v = new Patient { UserName = model.UserName, Email = model.Email };
+                            v.ImageName = "default-user-image.png";
+>>>>>>> 90422a301ee85160567882e50bc20c9e08b4a384
                             result = await UserManager.CreateAsync(v, model.Password);
-
+                           
                             // Add volunteer role to the new User
                             if (result.Succeeded)
                             {
@@ -192,6 +200,7 @@ namespace WebUI.Controllers
                     case EAccountType.Doctor:
                         {
                             // create new Ngo and map form values to the instance
+<<<<<<< HEAD
                             Doctor doc = new Doctor {
                                 UserName = model.UserName,
                                 Email = model.Email,
@@ -210,6 +219,12 @@ namespace WebUI.Controllers
 
                             result = await UserManager.CreateAsync(doc, model.Password);
 
+=======
+                            Doctor ngo = new Doctor { UserName = model.UserName, Email = model.Email };
+                            ngo.ImageName = "default-user-image.png";
+                            result = await UserManager.CreateAsync(ngo, model.Password);
+                           
+>>>>>>> 90422a301ee85160567882e50bc20c9e08b4a384
                             // Add Ngo role to the new User
                             if (result.Succeeded)
                             {
