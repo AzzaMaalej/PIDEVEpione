@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public enum Gender { male, female }
+    public enum Gender { Male, Female }
 
     public enum EAccountType
     {
