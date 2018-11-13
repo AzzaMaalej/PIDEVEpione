@@ -119,6 +119,7 @@ namespace WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            UserCoUserName = null;
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
@@ -193,6 +194,7 @@ namespace WebUI.Controllers
                                 await SignInManager.SignInAsync(v, isPersistent: false, rememberBrowser: false);
                                 // Email confirmation here
 
+                                UserCoUserName = null;
                                 return RedirectToAction("Index", "Home");
                             }
                             AddErrors(result);
@@ -230,7 +232,7 @@ namespace WebUI.Controllers
                             {
                                 //     UserManager.AddToRole(ngo.Id, EAccountType.Doctor.ToString());
                                 await SignInManager.SignInAsync(ngo, isPersistent: false, rememberBrowser: false);
-
+                                UserCoUserName = ngo.UserName;
                                 return RedirectToAction("Index", "Home");
                             }
                             // AddErrors(result);

@@ -11,12 +11,55 @@ namespace WebUI.Controllers.Analytics
     public class DashboardController : Controller
     {
         // GET: Dashboard
-        IServiceDashboard sm = new ServiceDashboard();
+        IServiceDashboard sd = new ServiceDashboard();
+        IServiceDashboard2 sd2 = new ServiceDashboard2();
+        IServiceDashboard3 sd3 = new ServiceDashboard3();
+
         // GET: Index
         public ActionResult Index()
         {
-            var medecin = sm.getDoctorByName(AccountController.UserCoUserName);
+            var medecin = sd.getDoctorByName(AccountController.UserCoUserName);
+            var listAppointments = sd3.getAllAppointmentsByDoctor(medecin.Id);
+            List<string> nberAppointments = new List<string>();
+            var appointment_states = listAppointments.Select(a => a.AppointmentState).Distinct();
+            var appointment_statesInString = new List<string>();
+            foreach (var item in appointment_states)
+            {
+                appointment_statesInString.Add(item.ToString());
+            }
+
+            foreach (var item in appointment_states)
+            {
+                nberAppointments.Add(((listAppointments.Count(x => x.AppointmentState == item))*100/listAppointments.Count()).ToString()+"%");
+            }
+
+            var finalRepartitionsByAppointment = nberAppointments;
+            ViewBag.STATES = appointment_statesInString;
+            ViewBag.REPARTITIONS = finalRepartitionsByAppointment.ToList();
             return View(medecin);
+        }
+
+        public ActionResult PatientTreated()
+        {
+            var listAppointments = sd3.getAllAppointments();
+            List<int> nberAppointments = new List<int>();
+            var appointment_states = listAppointments.Select(a => a.AppointmentState).Distinct();
+            var appointment_statesInString = new List<string>();
+            foreach (var item in appointment_states)
+            {
+                appointment_statesInString.Add(item.ToString());
+            }
+
+            foreach (var item in appointment_states)
+            {
+                nberAppointments.Add(listAppointments.Count(x => x.AppointmentState == item));
+            }
+
+            var finalRepartitionsByAppointment = nberAppointments;
+            ViewBag.STATES = appointment_statesInString;
+            ViewBag.REPARTITIONS = finalRepartitionsByAppointment.ToList();
+
+            return View();
         }
 
         // GET: Dashboard/Details/5

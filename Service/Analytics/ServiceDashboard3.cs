@@ -10,20 +10,24 @@ using System.Threading.Tasks;
 
 namespace Service.Analytics
 {
-    public class ServiceDashboard : Service<Doctor>, IServiceDashboard
+    public class ServiceDashboard3 : Service<Appointment>, IServiceDashboard3
     {
         static IDatabaseFactory dbf = new DatabaseFactory();
 
         static IUnitOfWork uow = new UnitOfWork(dbf);
 
-        public ServiceDashboard() : base(uow)
+        public ServiceDashboard3() : base(uow)
         {
         }
 
-        public Doctor getDoctorByName(string name)
+        public IEnumerable<Appointment> getAllAppointments()
         {
-            return Get(a => a.UserName == name);
+            return GetMany();
         }
 
+        public IEnumerable<Appointment> getAllAppointmentsByDoctor(string doctorId)
+        {
+            return GetMany(a => a.DoctorId == doctorId);
+        }
     }
 }

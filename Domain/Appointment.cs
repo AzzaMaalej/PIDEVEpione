@@ -11,8 +11,9 @@ namespace Domain
     public enum StateEnum
     {
         Cancelled,
+        In_Progress,
         Completed,
-        In_Progress
+        Postponed
     };
     public class Appointment
     {

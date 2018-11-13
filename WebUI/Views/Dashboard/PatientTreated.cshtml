@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Template/js/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <style>
+        #dfr{
+            width:400px;
+            height:400px;
+            border:1px dotted;
+            padding:1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dfr">
+        <canvas id="chartsjs_state"></canvas>
+    </div>
+    <script>
+        var listStatesArray = @Html.Raw(Json.Encode(ViewBag.STATES));
+        var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITIONS));
+        var line = $("#chartsjs_state");
+        var lineChart = new Chart(line, {
+
+            type:'line',
+            data:{
+                labels:listStatesArray,
+                datasets:[{
+                    fill:false,
+                    label:"Patient graph",
+                    data:repartitionArray,
+                    backgroundColor:["rgba(149,208,230,.7)","rgba(255,99,132,.7)","rgba(75,192,192,.7)","rgba(102,115,252,.7)"],
+                    borderColor:["rgb(149,208,230)","rgb(255,99,132)","rgb(75,192,192)","rgb(102,115,252)"],
+                    borderWidth:1,
+                }],
+            },
+
+            options:{
+                maintainAspectRatio:false,
+                scales:{
+                    yAxes:[{ticks:{beginAtZero:true},scaleLabel:{display:true, labelString:'Appointment State'} }], 
+                    xAxes:[{ticks:{beginAtZero:true},scaleLabel:{display:true, labelString:'Percentage'} }] 
+        },
+                legend:{display:true}
+        },
+
+
+        });
+
+    </script>
+</body>
+</html>
+
+
+
