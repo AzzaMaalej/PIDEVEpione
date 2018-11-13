@@ -44,7 +44,7 @@ namespace WebUI
             //    ClientId = "",
             //    ClientSecret = ""
             //});
-            AddUsersAndRoles();
+            //AddUsersAndRoles();
 
         }
 
