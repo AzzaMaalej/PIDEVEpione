@@ -174,8 +174,10 @@ namespace WebUI.Controllers
                                 ImageName = model.ImageName,
                                 PhoneNumber = model.PhoneNumber,
                                 Gender = model.Gender,
+
                             };
 
+                            //v.Roles.Add();
                             if (v.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);

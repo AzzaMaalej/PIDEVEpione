@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Service.Analytics;
+using Service.EspaceMedecin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,27 +8,30 @@ using System.Web.Mvc;
 
 namespace WebUI.Controllers.Analytics
 {
-    public class IndexController : Controller
+    public class DashboardController : Controller
     {
+        // GET: Dashboard
+        IServiceDashboard sm = new ServiceDashboard();
         // GET: Index
         public ActionResult Index()
         {
-            return View();
+            var medecin = sm.getDoctorByName(AccountController.UserCoUserName);
+            return View(medecin);
         }
 
-        // GET: Index/Details/5
+        // GET: Dashboard/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Index/Create
+        // GET: Dashboard/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Index/Create
+        // POST: Dashboard/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +47,13 @@ namespace WebUI.Controllers.Analytics
             }
         }
 
-        // GET: Index/Edit/5
+        // GET: Dashboard/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Index/Edit/5
+        // POST: Dashboard/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +69,13 @@ namespace WebUI.Controllers.Analytics
             }
         }
 
-        // GET: Index/Delete/5
+        // GET: Dashboard/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Index/Delete/5
+        // POST: Dashboard/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
