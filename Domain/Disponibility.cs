@@ -21,5 +21,8 @@ namespace Domain
         public DateTime StartDate { get; set; }
         [DHXJson(Alias = "end_date")]
         public DateTime EndDate { get; set; }
+        public virtual Doctor Doctor { get; set; }
+
+        public string DoctorId { get; set; }
     }
 }
