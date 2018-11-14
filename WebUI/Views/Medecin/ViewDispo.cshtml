@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Domain.Disponibility>
+
+@{
+    ViewBag.Title = "ViewDispo";
+    Layout = "~/Views/EspaceMedecin/_LayoutMedecin.cshtml";
+}
+<table>
+    <tr>
+        <td width="300px">
+            <div class="col-md-4 timing" style="width:250px">
+                <div class="opening-hours">
+                    <h3><i class="fa fa-clock-o"></i>Opening Hours</h3>
+                    <ul>
+                        <li>Monday - Friday</li>
+                        <li>8.00 AM - 8.00 PM</li>
+                        <div class="clearfix"></div>
+                    </ul>
+                    <ul>
+                        <li>Saturday</li>
+                        <li>8.00 AM - 3.00 PM</li>
+                        <div class="clearfix"></div>
+                    </ul>
+
+                </div>
+                <div class="help">
+                    <h3><i class="fa fa-pencil-square-o"></i>Need Help?</h3>
+                    <p>Just Make an Appointment to Get Help From Our Experts </p>
+                </div>
+            </div>
+            <a href=@Url.Content("/Medecin/Index")>Go back to all doctors</a>
+        </td>
+        <td width="1500px">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 timing">
+                    <div class="opening-hours">
+                        <h3><i class="fa fa-clock-o"></i>Disponibilities</h3>
+                        <ul>
+                            <li>From</li>
+                            <li>@Html.DisplayFor(modelItem => item.StartDate)</li>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <ul>
+                            <li>To</li>
+                            <li>@Html.DisplayFor(modelItem => item.EndDate)</li>
+                            <div class="clearfix"></div>
+                        </ul>
+
+                    </div>
+
+                </div>
+            }
+        </td>
+    </tr>
+</table>

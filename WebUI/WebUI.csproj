@@ -44,6 +44,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DHTMLX, Version=3.4.6717.29296, Culture=neutral, PublicKeyToken=53f24791214eb8ac, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DHTMLX.Scheduler.NET.3.4.2.0\lib\DHTMLX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
@@ -230,6 +235,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Analytics\IndexController.cs" />
+    <Compile Include="Controllers\EspaceMedecin\CalenderController.cs" />
+    <Compile Include="Controllers\EspaceMedecin\MedecinController.cs" />
+    <Compile Include="Controllers\EspaceMedecin\MedecinDashController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,10 +246,124 @@
     <Compile Include="Models\Analytics\UserModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\Data.dll" />
+    <Content Include="bin\Data.pdb" />
+    <Content Include="bin\DHTMLX.dll" />
+    <Content Include="bin\DHTMLX.pdb" />
+    <Content Include="bin\DHTMLX.xml" />
+    <Content Include="bin\Domain.dll" />
+    <Content Include="bin\Domain.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\fr\EntityFramework.resources.dll" />
+    <Content Include="bin\fr\EntityFramework.SqlServer.resources.dll" />
+    <Content Include="bin\fr\Microsoft.AspNet.Identity.Core.resources.dll" />
+    <Content Include="bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
+    <Content Include="bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll" />
+    <Content Include="bin\fr\System.Net.Http.Formatting.resources.dll" />
+    <Content Include="bin\fr\System.Web.Helpers.resources.dll" />
+    <Content Include="bin\fr\System.Web.Http.resources.dll" />
+    <Content Include="bin\fr\System.Web.Http.WebHost.resources.dll" />
+    <Content Include="bin\fr\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\fr\System.Web.Optimization.resources.dll" />
+    <Content Include="bin\fr\System.Web.Razor.resources.dll" />
+    <Content Include="bin\fr\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="bin\fr\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="bin\fr\System.Web.WebPages.resources.dll" />
+    <Content Include="bin\Google.Apis.PlatformServices.dll" />
+    <Content Include="bin\Google.Protobuf.dll" />
+    <Content Include="bin\Google.Protobuf.xml" />
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.Web.xml" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.xml" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Microsoft.Owin.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.xml" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\Service.dll" />
+    <Content Include="bin\Service.pdb" />
+    <Content Include="bin\ServicePattern.dll" />
+    <Content Include="bin\ServicePattern.pdb" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\WebUI.dll" />
+    <Content Include="bin\WebUI.pdb" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\bootstrap-3.1.1.min.css" />
@@ -258,6 +380,112 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\1.png" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\2.png" />
+    <Content Include="images\3.jpg" />
+    <Content Include="images\4.jpg" />
+    <Content Include="images\5.jpg" />
+    <Content Include="images\abt1.png" />
+    <Content Include="images\b1.jpg" />
+    <Content Include="images\b2.jpg" />
+    <Content Include="images\b3.jpg" />
+    <Content Include="images\b4.jpg" />
+    <Content Include="images\bookshow.jpg" />
+    <Content Include="images\btn_next.png" />
+    <Content Include="images\btn_pause.png" />
+    <Content Include="images\btn_play.png" />
+    <Content Include="images\btn_prev.png" />
+    <Content Include="images\cal.png" />
+    <Content Include="images\d1.jpg" />
+    <Content Include="images\d2.jpg" />
+    <Content Include="images\d3.jpg" />
+    <Content Include="images\d4.jpg" />
+    <Content Include="images\go.png" />
+    <Content Include="images\happy.jpg" />
+    <Content Include="images\img-1.jpg" />
+    <Content Include="images\img-2.jpg" />
+    <Content Include="images\img-3.jpg" />
+    <Content Include="images\img-4.jpg" />
+    <Content Include="images\ins1.jpg" />
+    <Content Include="images\ins10.jpg" />
+    <Content Include="images\ins11.jpg" />
+    <Content Include="images\ins12.jpg" />
+    <Content Include="images\ins13.jpg" />
+    <Content Include="images\ins14.jpg" />
+    <Content Include="images\ins15.jpg" />
+    <Content Include="images\ins16.jpg" />
+    <Content Include="images\ins2.jpg" />
+    <Content Include="images\ins3.jpg" />
+    <Content Include="images\ins4.jpg" />
+    <Content Include="images\ins5.jpg" />
+    <Content Include="images\ins7.jpg" />
+    <Content Include="images\ins8.jpg" />
+    <Content Include="images\ins9.jpg" />
+    <Content Include="images\instrument.jpg" />
+    <Content Include="images\l10.jpg" />
+    <Content Include="images\l11.jpg" />
+    <Content Include="images\l12.jpg" />
+    <Content Include="images\l13.jpg" />
+    <Content Include="images\l2.jpg" />
+    <Content Include="images\l3.jpg" />
+    <Content Include="images\l4.jpg" />
+    <Content Include="images\l5.jpg" />
+    <Content Include="images\l6.jpg" />
+    <Content Include="images\l7.jpg" />
+    <Content Include="images\l8.jpg" />
+    <Content Include="images\l9.jpg" />
+    <Content Include="images\men.png" />
+    <Content Include="images\mob.png" />
+    <Content Include="images\n1.jpg" />
+    <Content Include="images\n2.jpg" />
+    <Content Include="images\n3.jpg" />
+    <Content Include="images\news1-1.jpg" />
+    <Content Include="images\news1.jpg" />
+    <Content Include="images\news2-2.jpg" />
+    <Content Include="images\news2.jpg" />
+    <Content Include="images\news3-3.jpg" />
+    <Content Include="images\news3.jpg" />
+    <Content Include="images\news4-4.jpg" />
+    <Content Include="images\news4.jpg" />
+    <Content Include="images\news5-5.jpg" />
+    <Content Include="images\news5.jpg" />
+    <Content Include="images\p1.jpg" />
+    <Content Include="images\p2.jpg" />
+    <Content Include="images\p3.jpg" />
+    <Content Include="images\p4.jpg" />
+    <Content Include="images\public.jpg" />
+    <Content Include="images\ser1.jpg" />
+    <Content Include="images\ser2.jpg" />
+    <Content Include="images\ser3.jpg" />
+    <Content Include="images\ser4.jpg" />
+    <Content Include="images\ser5.jpg" />
+    <Content Include="images\single-post-img.jpg" />
+    <Content Include="images\social.png" />
+    <Content Include="images\tick.png" />
+    <Content Include="images\to-top2.png" />
+    <Content Include="images\top-line.jpg" />
+    <Content Include="images\tweet.png" />
+    <Content Include="images\who.jpg" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\cbpGridGallery.js" />
+    <Content Include="js\classie.js" />
+    <Content Include="js\easing.js" />
+    <Content Include="js\easyResponsiveTabs.js" />
+    <Content Include="js\imagesloaded.pkgd.min.js" />
+    <Content Include="js\jquery-2.1.1.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery.ba-cond.min.js" />
+    <Content Include="js\jquery.easing.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.slitslider.js" />
+    <Content Include="js\modernizr.custom.79639.js" />
+    <Content Include="js\modernizr.custom.js" />
+    <Content Include="js\move-top.js" />
+    <Content Include="js\numscroller-1.0.js" />
+    <Content Include="js\pignose.layerslider.js" />
+    <Content Include="js\tabs.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -265,6 +493,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\WebUI.dll.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3249,9 +3482,7 @@
     <Content Include="Template\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Temp\_MyLogin.cshtml" />
     <Content Include="Views\Temp\_MyRegister.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\EspaceMedecin\_LayoutMedecin.cshtml" />
-    <Content Include="Views\Medecin\Edit.cshtml" />
     <Content Include="Views\Medecin\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -3264,8 +3495,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\EspaceMedecin\_LayoutForCalender.cshtml" />
     <Content Include="Views\Calender\Index.cshtml" />
-    <Content Include="Views\Medecin\Details.cshtml" />
-=======
     <Content Include="Template\assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.eot" />
     <Content Include="Template\assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.ttf" />
     <Content Include="Template\assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.woff" />
@@ -3282,14 +3511,19 @@
     <Content Include="Views\Analytics\Layouts\_IndexLayout.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Analytics\Index.cshtml" />
->>>>>>> cb3c4869be08bea2083749b2b65475f98ab56905
+    <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\Temp\_LayoutAppointment.cshtml" />
+    <Content Include="Views\EspaceMedecin\_LayoutDashMed.cshtml" />
+    <Content Include="Views\MedecinDash\DashboardMedecin.cshtml" />
+    <Content Include="Views\MedecinDash\Edit.cshtml" />
+    <Content Include="Views\Medecin\ViewDispo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Upload\" />
     <Folder Include="Controllers\Chat\" />
     <Folder Include="Controllers\Doctolib\" />
-    <Folder Include="Controllers\EspaceMedecin\" />
     <Folder Include="Controllers\EspacePatient\" />
     <Folder Include="Controllers\ParcoursPatient\" />
     <Folder Include="Models\Chat\" />
@@ -6730,7 +6964,6 @@
     <Folder Include="Views\Analytics\Template_admin\" />
     <Folder Include="Views\Chat\" />
     <Folder Include="Views\Doctolib\" />
-    <Folder Include="Views\EspaceMedecin\" />
     <Folder Include="Views\EspacePatient\" />
     <Folder Include="Views\ParcoursPatient\" />
   </ItemGroup>
@@ -6743,9 +6976,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{2936F783-8B62-46F0-B8F5-AC4D30793F88}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{80b0794a-953f-4095-b8fd-6b87b361c40e}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServicePattern\ServicePattern.csproj">
+      <Project>{498e3058-8c85-4442-8c96-06135c96d03d}</Project>
+      <Name>ServicePattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{e74c8001-7beb-4688-a8df-9f13dcfd8815}</Project>

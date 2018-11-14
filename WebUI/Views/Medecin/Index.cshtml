@@ -6,32 +6,40 @@
 }
 
 
+@using (Html.BeginForm())
+{
+    <table border="0">
+        <tr>
+            <td>
+                <div> Serach by area : @Html.TextBox("SearchString")    </div>
+            </td>
 
-    @if (Model.Count() > 1)
+            <td>
+                <input type="submit" value="Search" id="submit" />
+            </td>
+        </tr>
+    </table>
+}
+<hr />
 
-    {
-        foreach (var item in Model)
+        @foreach (var item in Model)
         {
           
                 <div class="col-md-12 blog-top" >
                     <div class="blog-in">
                         <a href="single.html" class="blog-post">
                             @{string path = "~/Content/UploadAzza/" + @item.ImageName;}
-                            <img src="@Url.Content(path)" alt=" "  style="height:300px;width:200px">
+                            <img src="@Url.Content(path)" alt=" "  style="height:250px;width:200px">
                         </a>
                         <div class="blog-grid">
-                            <div class="date">
-                                <span class="date-in"><i class="fa fa-calendar"></i>29.3.2016</span>
-                                <a href="single.html" class="comments"><i class="fa fa-comment"></i>48</a>
-                                <div class="clearfix"> </div>
-                            </div>
+                            
                             <h3><a href="#">@Html.DisplayFor(modelItem => item.FirstName)  @Html.DisplayFor(modelItem => item.LastName)</a></h3>
                             <p>
-                                Photography Daniel Jackson,  styling by Alastair McKimm, hair by Shon  and Esther Langham, make-up by Yadim,  Francelle and Hannah Murray, <span>
-                                    casting by AM casting. Production  by Nikki Stromberg and Matthew Youmans at M.A.P New York.
-                                </span>
+                                Hello I am @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) a @Html.DisplayFor(modelItem => item.Speciality) in @Html.DisplayFor(modelItem => item.Address). <span>
+                                I love to work with all my hospital staff and seniour doctors.
+                                </span>This is my Number: @Html.DisplayFor(modelItem => item.PhoneNumber)
                             </p>
-                            <a href="#" class="smore">READ MORE</a>
+                            @Html.ActionLink("View Disponibilities", "ViewDispo", new { id = item.Id }, new { @class ="smore" }) View Disponibilities
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -40,67 +48,5 @@
            
 
                                     }
-                                }
-else{
-            foreach (var item in Model)
-            {
-                using (Html.BeginForm("Delete", "Medecin", new { id = item.Id }))
-                {  <div class="login-form-grids">
-                    <div class="happy-patients-grid-right">
-                        @{string path = "~/Content/UploadAzza/" + @item.ImageName;}
+                           
 
-                        <img src="@Url.Content(path)" />
-                    </div>
-
-                    <div class="clearfix"></div>
-                    <label class="test-info">
-                        UserName: @Html.DisplayFor(modelItem => item.UserName)
-                    </label>
-
-                    <div class="clearfix"></div>
-                    <label class="test-info">
-                        First Name: @Html.DisplayFor(modelItem => item.FirstName)
-                    </label>
-                    <div class="clearfix"></div>
-
-                    <label class="test-info">
-                        Last Name: @Html.DisplayFor(modelItem => item.LastName)
-                    </label>
-                    <div class="clearfix"></div>
-
-                    <label class="test-info">
-                        Gender: @Html.DisplayFor(modelItem => item.Gender)
-                    </label>
-                    <div class="clearfix"></div>
-
-                    <label class="test-info">
-                        Speciality: @Html.DisplayFor(modelItem => item.Speciality)
-                    </label>
-                    <div class="clearfix"></div>
-                    <label class="test-info">Email: @Html.DisplayFor(modelItem => item.Email)</label>
-                    <div class="clearfix"></div>
-                    <label class="test-info">Phone number: @Html.DisplayFor(modelItem => item.PhoneNumber)</label>
-                    <div class="clearfix"></div>
-
-                    <label class="test-info">
-                        Birthdate: @Html.DisplayFor(modelItem => item.BirthDate)
-                    </label>
-
-                    <div class="clearfix"></div>
-                    <label class="test-info">
-                        Address: @Html.DisplayFor(modelItem => item.Address)
-                    </label>
-
-
-
-                    <div class="clearfix"></div>
-
-                            <h3>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-default_2" })
-
-                                <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete your account?');" />
-                            </h3>
-    </div>
-                                }
-                            }
-    }
