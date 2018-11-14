@@ -2,6 +2,7 @@
 using Domain;
 using Newtonsoft.Json.Linq;
 using Service.EspaceMedecin;
+using Service.EspacePatient;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,16 +17,17 @@ namespace WebUI.Controllers.EspaceMedecin
     public class MedecinController : Controller
 
     {
-       
+        ServiceAppointment sa = new ServiceAppointment();
         ServiceMedecin sm = new ServiceMedecin();
         
         // GET: Medecin
         public ActionResult Index()
         {
             //var medecin= new IEnumerable<Doctor>();
-            
+            int a=0;
                var  medecin2 = sm.GetMany().ToList();
-                return View(medecin2);
+           
+            return View(medecin2);
             
             
         }
@@ -35,6 +37,7 @@ namespace WebUI.Controllers.EspaceMedecin
             //var medecin= new IEnumerable<Doctor>();
 
             var medecin2 = sm.GetMany(p=>p.Address.Contains(SearchString));
+            
             return View(medecin2);
 
 

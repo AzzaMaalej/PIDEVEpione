@@ -12,7 +12,7 @@
             <div class="page-header-inner ">
                 <!-- logo start -->
                 <div class="page-logo">
-                    <a href="index-2.html">
+                    <a href="@Url.Content("/Home/Index")">
                         <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
                         <span class="logo-default">EPIONE</span>
                     </a>
@@ -49,7 +49,7 @@
                                     <a class="deutsch"><img src=@Url.Content("img/flags/de.png") alt=""> Deutsch</a>
                                 </li>
                                 <li>
-                                    <a class="ukrainian"><img src=@Url.Content("img/flags/ua.png") alt=""> Українська</a>
+                                    <a class="ukrainian"><img src=@Url.Content("img/flags/ua.png") alt=""> ??????????</a>
                                 </li>
                                 <li>
                                     <a class="english"><img src=@Url.Content("img/flags/gb.png") alt=""> English</a>
@@ -58,7 +58,7 @@
                                     <a class="espana"><img src=@Url.Content("img/flags/es.png") alt=""> España</a>
                                 </li>
                                 <li>
-                                    <a class="russian"><img src=@Url.Content("img/flags/ru.png") alt=""> Русский</a>
+                                    <a class="russian"><img src=@Url.Content("img/flags/ru.png") alt=""> ???????</a>
                                 </li>
                             </ul>
                         </li>
@@ -219,8 +219,8 @@
                         <!-- start manage user dropdown -->
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle " src=@Url.Content("img/dp.jpg") />
-                                <span class="username username-hide-on-mobile"> Kiran </span>
+                                <img alt="" width="35" height="40" class="img-circle " src=@Url.Content("/Content/Upload/"+ Model.ImageName) />
+                                <span class="username username-hide-on-mobile"> @Html.DisplayFor(model => Model.UserName) </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
@@ -245,11 +245,7 @@
                                         <i class="icon-lock"></i> Lock
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="login.html">
-                                        <i class="icon-logout"></i> Log Out
-                                    </a>
-                                </li>
+                                @*@Html.Partial("_DisconnectPartial")*@
                             </ul>
                         </li>
                         <!-- end manage user dropdown -->

@@ -234,16 +234,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Analytics\IndexController.cs" />
+    <Compile Include="Controllers\Analytics\DashboardController.cs" />
     <Compile Include="Controllers\EspaceMedecin\CalenderController.cs" />
     <Compile Include="Controllers\EspaceMedecin\MedecinController.cs" />
     <Compile Include="Controllers\EspaceMedecin\MedecinDashController.cs" />
+    <Compile Include="Controllers\EspacePatient\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Analytics\UserModel.cs" />
+    <Compile Include="Models\EspacePatient\AppointmentModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -281,6 +283,10 @@
     <Content Include="bin\fr\System.Web.WebPages.Deployment.resources.dll" />
     <Content Include="bin\fr\System.Web.WebPages.Razor.resources.dll" />
     <Content Include="bin\fr\System.Web.WebPages.resources.dll" />
+    <Content Include="bin\Google.Apis.Auth.dll" />
+    <Content Include="bin\Google.Apis.Auth.PlatformServices.dll" />
+    <Content Include="bin\Google.Apis.Core.dll" />
+    <Content Include="bin\Google.Apis.dll" />
     <Content Include="bin\Google.Apis.PlatformServices.dll" />
     <Content Include="bin\Google.Protobuf.dll" />
     <Content Include="bin\Google.Protobuf.xml" />
@@ -364,8 +370,24 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="bin\WebUI.dll" />
     <Content Include="bin\WebUI.pdb" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\UploadAzza\b1.jpg" />
+    <Content Include="Content\UploadAzza\b3.jpg" />
+    <Content Include="Content\UploadAzza\d1.jpg" />
+    <Content Include="Content\UploadAzza\d2.jpg" />
+    <Content Include="Content\UploadAzza\d4.jpg" />
+    <Content Include="Content\UploadAzza\default-user-image.png" />
+    <Content Include="Content\UploadAzza\icons8-étoile-50-remlpi.png" />
+    <Content Include="Content\UploadAzza\icons8-étoile-50_empty.png" />
+    <Content Include="Content\UploadAzza\icons8-étoile-50_waiting.png" />
+    <Content Include="Content\UploadAzza\n2.jpg" />
+    <Content Include="Content\Upload\d2.jpg" />
     <Content Include="css\bootstrap-3.1.1.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\custom.css" />
@@ -377,9 +399,12 @@
     <Content Include="css\reset.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\1.jpg" />
     <Content Include="images\1.png" />
     <Content Include="images\2.jpg" />
@@ -498,6 +523,21 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\WebUI.dll.config" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome.ttf" />
+    <Content Include="fonts\fontawesome.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3452,6 +3492,8 @@
     <Content Include="Template\light\website-redesign.html" />
     <Content Include="Template\light\widget.html" />
     <Content Include="Template\light\wizard_form.html" />
+    <Content Include="Views\Analytics\Layouts\_IndexLayout.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3508,7 +3550,6 @@
     <Content Include="Template\light\fonts\fontawesome-webfont3e6e.woff" />
     <Content Include="Template\light\fonts\fontawesome-webfont3e6e.woff2" />
     <Content Include="Template\light\fonts\fontawesome-webfontd41d.eot" />
-    <Content Include="Views\Analytics\Layouts\_IndexLayout.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Analytics\Index.cshtml" />
     <Content Include="Views\Appointment\Create.cshtml" />
@@ -3521,15 +3562,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Upload\" />
     <Folder Include="Controllers\Chat\" />
     <Folder Include="Controllers\Doctolib\" />
-    <Folder Include="Controllers\EspacePatient\" />
     <Folder Include="Controllers\ParcoursPatient\" />
     <Folder Include="Models\Chat\" />
     <Folder Include="Models\Doctolib\" />
     <Folder Include="Models\EspaceMedecin\" />
-    <Folder Include="Models\EspacePatient\" />
     <Folder Include="Models\ParcoursPatient\" />
     <Folder Include="Template\assets\jquery-file-upload\img\css\bootstrap\css\bootstrap\" />
     <Folder Include="Template\assets\jquery-file-upload\img\css\bootstrap\images\portfolio\" />
@@ -6968,9 +7006,6 @@
     <Folder Include="Views\ParcoursPatient\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
