@@ -1,7 +1,6 @@
 ﻿using DHTMLX.Scheduler.Data;
 using DHTMLX.Common;
 using DHTMLX.Scheduler;
-using DHTMLX.Scheduler.Data;
 using Domain;
 using System;
 using System.Collections.Generic;
