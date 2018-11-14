@@ -20,7 +20,7 @@ namespace WebUI.Controllers.Analytics
         {
             var medecin = sd.getDoctorByName(AccountController.UserCoUserName);
             var listAppointments = sd3.getAllAppointmentsByDoctor(medecin.Id);
-            List<string> nberAppointments = new List<string>();
+            List<double> nberAppointments = new List<double>();
             var appointment_states = listAppointments.Select(a => a.AppointmentState).Distinct();
             var appointment_statesInString = new List<string>();
             foreach (var item in appointment_states)
@@ -30,7 +30,10 @@ namespace WebUI.Controllers.Analytics
 
             foreach (var item in appointment_states)
             {
-                nberAppointments.Add(((listAppointments.Count(x => x.AppointmentState == item))*100/listAppointments.Count()).ToString()+"%");
+                //nberAppointments.Add(((listAppointments.Count(x => x.AppointmentState == item))*100/listAppointments.Count()));
+                double res = (listAppointments.Count(x => x.AppointmentState == item)) * 100 / listAppointments.Count();
+                double nber = Math.Round(res, 1);
+                nberAppointments.Add(nber);
             }
 
             var finalRepartitionsByAppointment = nberAppointments;

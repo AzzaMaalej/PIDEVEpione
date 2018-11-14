@@ -218,7 +218,7 @@
                     <!-- start manage user dropdown -->
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" width="35" height="40" class="img-circle " src=@Url.Content("/Content/Upload/"+ Model.ImageName) />
+                            <img alt="" width="30" height="30" class="img-circle " src=@Url.Content("/Content/Upload/"+ Model.ImageName) />
                             <span class="username username-hide-on-mobile"> @Html.DisplayFor(model => Model.UserName) </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -1013,65 +1013,9 @@
                     </div>
                 </div>
                 <!-- start widget -->
-                <div class="state-overview">
-                    <div class="row">
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="info-box bg-blue">
-                                <span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Appointments</span>
-                                    <span class="info-box-number">450</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 75%"></div>
-                                    </div>
-                                    <span class="progress-description">
-                                        75% Increase in 28 Days
-                                    </span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="info-box bg-orange">
-                                <span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">New Patients</span>
-                                    <span class="info-box-number">155</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 80%"></div>
-                                    </div>
-                                    <span class="progress-description">
-                                        80% Increase in 28 Days
-                                    </span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="info-box bg-purple">
-                                <span class="info-box-icon push-bottom"><i class="material-icons">content_cut</i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Operations</span>
-                                    <span class="info-box-number">52</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 85%"></div>
-                                    </div>
-                                    <span class="progress-description">
-                                        85% Increase in 28 Days
-                                    </span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-                        <!-- /.col -->
-                    </div>
-                </div>
+
+                @Html.Partial("_WidgetsPartial")
+
                 <!-- end widget -->
                 <!-- chart start -->
                 <div class="row">
