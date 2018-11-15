@@ -18,64 +18,18 @@
 </div>
 
 <script>
-		var config = {
+    var listStatesArray = @Html.Raw(Json.Encode(ViewBag.STATES));
+    var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITIONS));
+    var config = {
 			type: 'line',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-				datasets: [{
-					label: 'Completed',
-					fill: false,
-					backgroundColor: window.chartColors.blue,
-					borderColor: window.chartColors.blue,
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-					    randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor()
-					],
-				}, {
-					label: 'Canceled',
+			    labels: ['Janv', 'Fev', 'Mars', 'Avr', 'Mai'],
+			        datasets: [{
+				    label: 'Treated',
 					fill: false,
 					backgroundColor: window.chartColors.green,
 					borderColor: window.chartColors.green,
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor()
-					],
-				}, {
-					label: 'Postponed',
-					backgroundColor: window.chartColors.red,
-					borderColor: window.chartColors.red,
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor()
-					],
-					fill: false,
+					data: repartitionArray,
 				}]
 			},
 			options: {

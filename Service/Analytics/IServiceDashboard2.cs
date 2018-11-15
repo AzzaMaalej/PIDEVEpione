@@ -10,7 +10,8 @@ namespace Service.Analytics
 {
     public interface IServiceDashboard2 : IService<Patient>
     {
-        IEnumerable<Patient> getAllPatients();
-        IEnumerable<Patient> getAllPatientsTreated();
+        IEnumerable<Patient> getAllPatientsByDoctor(string doctorId);
+        IEnumerable<Patient> getAllPatientsTreatedByDoctor(string doctorId);
+        IEnumerable<Patient> getAllPatientsNotTreatedByDoctor(string doctorId);
     }
 }

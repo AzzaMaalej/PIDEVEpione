@@ -20,18 +20,33 @@ namespace Service.Analytics
         {
         }
 
-        public IEnumerable<Patient> getAllPatients()
+        public IEnumerable<Patient> getAllPatientsByDoctor(string doctorId)
         {
             return GetMany();
         }
-        public IEnumerable<Patient> getAllPatientsTreated()
+        public IEnumerable<Patient> getAllPatientsTreatedByDoctor(string doctorId)
         {
-            var app = uow.getRepository<Appointment>().GetMany(a => a.AppointmentState == StateEnum.Completed);
+            var app = uow.getRepository<Appointment>().GetMany(a => a.AppointmentState == StateEnum.Completed 
+                || a.AppointmentState == StateEnum.In_Progress
+                && a.DoctorId.Equals(doctorId));
             var req = from patients in GetMany()
                       join ap in app
-                      on patients.Id equals ap.PatientId
+                      on patients.Id equals ap.PatientId 
                       select patients;
-            return req;
+            return req.Distinct();
         }
+        public IEnumerable<Patient> getAllPatientsNotTreatedByDoctor(string doctorId)
+        {
+            var app = uow.getRepository<Appointment>()
+                .GetMany(a => a.AppointmentState != StateEnum.Completed 
+                    && a.AppointmentState != StateEnum.In_Progress
+                    && a.DoctorId.Equals(doctorId));
+            var req = from patients in GetMany()
+                      join ap in app
+                      on patients.Id equals ap.PatientId 
+                      select patients;
+            return req.Distinct();
+        }
+
     }
 }
