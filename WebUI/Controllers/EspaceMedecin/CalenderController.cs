@@ -12,6 +12,7 @@ using Data;
 using Service.EspaceMedecin;
 using DHTMLX.Scheduler.Controls;
 using System.Collections;
+using System.Web.UI;
 
 namespace WebUI.Controllers.EspaceMedecin
 {
@@ -80,17 +81,42 @@ namespace WebUI.Controllers.EspaceMedecin
                 switch (action.Type)
                 {
                     case DataActionTypes.Insert:
+                        { if (changedEvent.StartDate >= DateTime.Now.Date)
+                            {
+                                changedEvent.Description = "Disponible";
+                                db.Disponibilities.Add(changedEvent);
+                            }
+                            else
+                            {
+                                Response.Write("alert('You can t add disponibility in the past')");
+                            }
+                        }
+                            break;
+                    case DataActionTypes.Delete:
+
+                        if (changedEvent.DoctorId == ((sm.getDoctorByUserName(AccountController.UserCoUserName)).Single()).Id)
+                        { db.Entry(changedEvent).State = EntityState.Deleted; }
+                        else
                         {
-                            changedEvent.Description = "Disponible";
-                            db.Disponibilities.Add(changedEvent);
+                            Response.Write("alert('You can t delete disponibility of another doctor')");
                         }
                         break;
-                    case DataActionTypes.Delete:
-                        db.Entry(changedEvent).State = EntityState.Deleted;
-                        break;
                     default:// "update"  
-                        db.Entry(changedEvent).State = EntityState.Modified;
-                        break;
+                        {
+                            if (changedEvent.StartDate >= DateTime.Now.Date)
+                            {if (changedEvent.DoctorId == ((sm.getDoctorByUserName(AccountController.UserCoUserName)).Single()).Id)
+                                { db.Entry(changedEvent).State = EntityState.Modified; }
+                                else
+                                {
+                                    Response.Write("alert('You can t update disponibility of another doctor')");
+                                }
+                            }
+                            else
+                            {
+                                Response.Write("alert('You can t update disponibility in the past')");
+                            }
+                        }
+                            break;
                 }
                 db.SaveChanges();
                 action.TargetId = changedEvent.Id;
