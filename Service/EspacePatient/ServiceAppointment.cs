@@ -31,6 +31,11 @@ namespace Service.EspacePatient
             ////_repository.Add(entity);
             uof.getRepository<Appointment>().Add(ap);
         }
+        public List<Appointment> GetAll()
+        {
+            var list = uof.getRepository<Appointment>().GetMany(null, null).ToList();
+            return list;
+        }
 
 
     }
