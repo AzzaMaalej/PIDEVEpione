@@ -15,7 +15,6 @@ namespace Data.Configurations
 
             HasMany(p => p.Appointments).WithRequired(a => a.Patient).HasForeignKey(a => a.PatientId).WillCascadeOnDelete(false);
             HasMany(p => p.Conversations).WithRequired(c => c.Patient).HasForeignKey(c => c.PatientId).WillCascadeOnDelete(false);
-            HasOptional(p => p.MedicalPath).WithRequired(m => m.Patient).WillCascadeOnDelete(false);
         }
     }
 }

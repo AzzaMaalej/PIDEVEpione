@@ -4,20 +4,20 @@
 @{
     ViewBag.Title = "RssReader";
     //Layout = "~/Views/Temp/_MyLayout.cshtml";
-    Layout = "~/Views/Temp/_MyLogin.cshtml";
+    //Layout = "~/Views/Temp/_MyLogin.cshtml";
 }
 
 <h2>Flux RSS</h2>
 
-<p>
-    @Html.ActionLink("Create Compte", "Create")
-</p>
+
 @using (Html.BeginForm())
 {
+
     <p>
         Find by name: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
+
 }
 <table id="results">
     <tr>
@@ -28,9 +28,11 @@
             Acts
         </th>
         <th>
+          Create 
+        </th>
+        <th>
             Details
         </th>
-
 
     </tr>
 
@@ -45,9 +47,11 @@
 
             </td>
             <td>
+                <a>@Html.ActionLink("  Add", "Create")</a>
+            </td>
+            <td>
                 <a href="@item.Link" target="_blank">More</a>
             </td>
-
         </tr>
     }
 

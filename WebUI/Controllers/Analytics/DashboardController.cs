@@ -21,6 +21,7 @@ namespace WebUI.Controllers.Analytics
             var medecin = sd.getDoctorByName(AccountController.UserCoUserName);
             var listAppointments = sd3.getAllAppointmentsByDoctor(medecin.Id);
             List<double> nberAppointments = new List<double>();
+            double nberAppointmentsCanceled = new double();
             var appointment_states = listAppointments.Select(a => a.AppointmentState).Distinct();
             var appointment_statesInString = new List<string>();
             foreach (var item in appointment_states)
@@ -34,33 +35,40 @@ namespace WebUI.Controllers.Analytics
                 double res = (listAppointments.Count(x => x.AppointmentState == item)) * 100 / listAppointments.Count();
                 double nber = Math.Round(res, 1);
                 nberAppointments.Add(nber);
+                if (item == Domain.StateEnum.Cancelled)
+                    nberAppointmentsCanceled = nber;
             }
 
             var finalRepartitionsByAppointment = nberAppointments;
             ViewBag.STATES = appointment_statesInString;
             ViewBag.REPARTITIONS = finalRepartitionsByAppointment.ToList();
+            ViewBag.CANCELED = nberAppointmentsCanceled;
             return View(medecin);
         }
 
         public ActionResult PatientTreated()
         {
-            var listAppointments = sd3.getAllAppointments();
+            var medecin = sd.getDoctorByName(AccountController.UserCoUserName);
+            var listPatients = sd2.getAllPatientsTreatedByDoctor(medecin.Id);
+            var listMonths = sd3.getAllAppointmentsByDoctor(medecin.Id).GroupBy(a => a.Date.Month.ToString());
             List<int> nberAppointments = new List<int>();
-            var appointment_states = listAppointments.Select(a => a.AppointmentState).Distinct();
-            var appointment_statesInString = new List<string>();
-            foreach (var item in appointment_states)
+            var appointment_monthInString = new List<string>();
+
+            foreach (var item in listMonths)
             {
-                appointment_statesInString.Add(item.ToString());
+                appointment_monthInString.Add(item.ToString());
             }
 
-            foreach (var item in appointment_states)
+            foreach (var item in listMonths)
             {
-                nberAppointments.Add(listAppointments.Count(x => x.AppointmentState == item));
+                nberAppointments.Add(listMonths.Count(x => x.Any() == item.Any()));
             }
 
             var finalRepartitionsByAppointment = nberAppointments;
-            ViewBag.STATES = appointment_statesInString;
-            ViewBag.REPARTITIONS = finalRepartitionsByAppointment.ToList();
+            var nbrePT = listPatients.Count();
+            ViewBag.MONTHS = appointment_monthInString;
+            ViewBag.NBERPATIENT = nbrePT;
+            ViewBag.REPARTITION = finalRepartitionsByAppointment.ToList();
 
             return View();
         }

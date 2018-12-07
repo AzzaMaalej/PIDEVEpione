@@ -18,6 +18,11 @@ namespace WebUI.Controllers.EspacePatient
     public class AppointmentController : Controller
     {
         ServiceAppointment SA = new ServiceAppointment();
+
+
+        public ActionResult IndexWS()
+        { return View(SA.GetAll());
+        }
         // GET: Appointment
         public ActionResult Index()
         {
