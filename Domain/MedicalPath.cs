@@ -11,12 +11,14 @@ namespace Domain
     public class MedicalPath
     {
         [Key]
-        [ForeignKey("Patient")]
-        public string PathId { get; set; }
+       
+        public String PathId { get; set; }
         public string RecommendedSpeciality { get; set; }
-        public int ValidatedSteps { get; set; }
+        public  bool ValidatedSteps { get; set; }
         public string Justification { get; set; }
-        public virtual Patient Patient { get; set; }
+        public string Description { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime RecommandationDate { get; set; }
         public virtual ICollection<Doctor> Doctors { get; set; }
     }
 }
