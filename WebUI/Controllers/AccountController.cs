@@ -119,6 +119,7 @@ namespace WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            UserCoUserName = null;
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
@@ -174,9 +175,15 @@ namespace WebUI.Controllers
                                 ImageName = model.ImageName,
                                 PhoneNumber = model.PhoneNumber,
                                 Gender = model.Gender,
+
                             };
 
+<<<<<<< HEAD
                             if (model.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
+=======
+                            //v.Roles.Add();
+                            if (v.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
+>>>>>>> 72d741e6274731170a151ab0f08778010c53f879
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
@@ -191,6 +198,7 @@ namespace WebUI.Controllers
                                 await SignInManager.SignInAsync(v, isPersistent: false, rememberBrowser: false);
                                 // Email confirmation here
 
+                                UserCoUserName = null;
                                 return RedirectToAction("Index", "Home");
                             }
                             AddErrors(result);
@@ -228,7 +236,7 @@ namespace WebUI.Controllers
                             {
                                 //     UserManager.AddToRole(ngo.Id, EAccountType.Doctor.ToString());
                                 await SignInManager.SignInAsync(ngo, isPersistent: false, rememberBrowser: false);
-
+                                UserCoUserName = ngo.UserName;
                                 return RedirectToAction("Index", "Home");
                             }
                             // AddErrors(result);

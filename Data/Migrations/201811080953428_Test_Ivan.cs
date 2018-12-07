@@ -58,7 +58,7 @@ namespace Data.Migrations
                 c => new
                     {
                         AppointmentId = c.Int(nullable: false, identity: true),
-                        Date = c.DateTime(nullable: false),
+                        Date = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         Disease = c.String(),
                         state = c.Int(nullable: false),
                         course_CourseId = c.Int(),

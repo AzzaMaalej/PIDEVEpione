@@ -14,7 +14,7 @@ namespace Data.Migrations
             RenameIndex(table: "dbo.Appointments", name: "IX_doctor_Id", newName: "IX_DoctorId");
             RenameIndex(table: "dbo.Appointments", name: "IX_patient_Id", newName: "IX_PatientId");
             AddColumn("dbo.Appointments", "Location", c => c.String());
-            AddColumn("dbo.Appointments", "AppointmentState", c => c.String(nullable: false, defaultValue: "In_progress"));
+            AddColumn("dbo.Appointments", "AppointmentState", c => c.Int(nullable: false, defaultValue: 0));
             CreateIndex("dbo.Rates", "Appointment_AppointmentId");
             CreateIndex("dbo.Rates", "Patient_Id");
             DropColumn("dbo.Appointments", "Disease");

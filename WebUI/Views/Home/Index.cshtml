@@ -1,4 +1,5 @@
-﻿
+﻿@model WebUI.Controllers.AccountController
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Temp/_MyLayout.cshtml";
@@ -87,53 +88,37 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
             <ul class="nav navbar-nav nav_1">
-                <li class="current_page"><a href="index.html">Home</a></li>
+                <li class="current_page"><a href=@Url.Content("/Home/Index")>Home</a></li>
                 <li><a href=@Url.Content("/Medecin/Index")>Medecin</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab<span class="caret"></span></a>
                     <ul class="dropdown-menu drop_menu" role="menu">
-                        <li><a href="laboratory.html">About Lab</a></li>
-                        <li><a href="quality.html">Quality</a></li>
-                        <li><a href="technologies.html">Technologies</a></li>
-                        <li><a href="instruments.html">Instruments</a></li>
+                        <li><a href="#">About Lab</a></li>
+                        <li><a href="#">Quality</a></li>
+                        <li><a href="#">Technologies</a></li>
+                        <li><a href="#">Instruments</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book Test<span class="caret"></span></a>
                     <ul class="dropdown-menu drop_menu" role="menu">
-                        <li><a href="book-a-test.html">Book a Test</a></li>
-                        <li><a href="test-list.html">Test Menu</a></li>
+                        <li><a href="#">Book a Test</a></li>
+                        <li><a href="#">Test Menu</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opportunity<span class="caret"></span></a>
                     <ul class="dropdown-menu drop_menu" role="menu">
-                        <li><a href="career.html">Careers</a></li>
-                        <li><a href="404.html">Franchisee</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
-                    <ul class="dropdown-menu drop_menu" role="menu">
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="faq.html">Faq</a></li>
-                        <li><a href="mobile-app.html">App</a></li>
-                        <li><a href=@Url.Content("/Account/Login")>Login</a></li>
-                        <li><a href="terms.html">Terms of Use</a></li>
-                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                        <li><a href="privacy_policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Franchisee</a></li>
                     </ul>
                 </li>
                 @if (Request.IsAuthenticated)
                 {
-                    <li id="hideMenu"><a href=@Url.Content("/Index/Index")>Dashboard</a></li> 
-                }
-                else
-                {
-                    <li></li>
+                    <li id="hideMenu"><a href=@Url.Content("/Dashboard/Index")>Dashboard</a></li> 
                 }
 
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>

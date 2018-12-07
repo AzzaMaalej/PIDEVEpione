@@ -6,65 +6,49 @@
 }
 
 
-@foreach (var item in Model)
 
+@using (Html.BeginForm())
 {
-    using (Html.BeginForm("Delete", "Medecin", new { id = item.Id }))
-    {
-        <div class="happy-patients-grid-right">
-            @{string path = "~/Content/UploadAzza/" + @item.ImageName;}
+    <table border="0">
+        <tr>
+            <td>
+                <div> Serach by area : @Html.TextBox("SearchString")    </div>
+            </td>
 
-            <img src="@Url.Content(path)" />
-        </div>
+            <td>
+                <input type="submit" value="Search" id="submit" />
+            </td>
+        </tr>
+    </table>
+}
+<hr />
 
-        <div class="clearfix"></div>
-        <label class="test-info">
-            UserName: @Html.DisplayFor(modelItem => item.UserName)
-        </label>
+        @foreach (var item in Model)
+        {
+          
+                <div class="col-md-12 blog-top" >
+                    <div class="blog-in">
+                        <a href="single.html" class="blog-post">
+                            @{string path = "~/Content/UploadAzza/" + @item.ImageName;}
+                            <img src="@Url.Content(path)" alt=" "  style="height:250px;width:200px">
+                        </a>
+                        <div class="blog-grid">
+                            
+                            <h3><a href="#">@Html.DisplayFor(modelItem => item.FirstName)  @Html.DisplayFor(modelItem => item.LastName)</a></h3>
+                            <p>
+                                Hello I am @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) a @Html.DisplayFor(modelItem => item.Speciality) in @Html.DisplayFor(modelItem => item.Address). <span>
+                                I love to work with all my hospital staff and seniour doctors.
+                                </span>This is my Number: @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </p>
+                            @Html.ActionLink("View Disponibilities", "ViewDispo", new { id = item.Id }, new { @class ="smore" }) View Disponibilities
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <i class="black"> </i>
+                </div>
+            
+                                }
+                
 
-        <div class="clearfix"></div>
-        <label class="test-info">
-            First Name: @Html.DisplayFor(modelItem => item.FirstName)
-        </label>
-        <div class="clearfix"></div>
+  
 
-        <label class="test-info">
-            Last Name: @Html.DisplayFor(modelItem => item.LastName)
-        </label>
-        <div class="clearfix"></div>
-
-        <label class="test-info">
-            Gender: @Html.DisplayFor(modelItem => item.Gender)
-        </label>
-        <div class="clearfix"></div>
-
-        <label class="test-info">
-            Speciality: @Html.DisplayFor(modelItem => item.Speciality)
-        </label>
-        <div class="clearfix"></div>
-        <label class="test-info">Email: @Html.DisplayFor(modelItem => item.Email)</label>
-        <div class="clearfix"></div>
-        <label class="test-info">Phone number: @Html.DisplayFor(modelItem => item.PhoneNumber)</label>
-        <div class="clearfix"></div>
-
-        <label class="test-info">
-            Birthdate: @Html.DisplayFor(modelItem => item.BirthDate)
-        </label>
-
-        <div class="clearfix"></div>
-                    <label class="test-info">
-                        Address: @Html.DisplayFor(modelItem => item.Address)
-                    </label>
-
-
-
-                            <div class="clearfix"></div>
-
-                            <h3>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-default_2" })
-                                
-                                <input  type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete your account?');" />
-                                  </h3>
-
-                    }
-                }

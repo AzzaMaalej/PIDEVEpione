@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav nav_1">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href=@Url.Content("/Medecin/Index")>Doctor</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab<span class="caret"></span></a>
                         <ul class="dropdown-menu drop_menu" role="menu">
@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </header>
             <div id="breadcrumb_wrapper">
                 <div class="container">
-                    <h2>Médecin</h2>
+                    <h2>Doctors</h2>
                     <h6>Profil</h6>
                 </div>
             </div>
@@ -204,9 +204,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- login -->
         <div class="login">
             <div class="container">
-                <h3>Informations personnelles</h3>
-                <p class="est">Vous pouvez modifier vos info personnelles ici</p>
-                <div class="login-form-grids">
+                <h3>All Doctors</h3>
+                <p class="est">You can find all our doctors here</p>
+                
+                <div >
               @RenderBody() 
                 </div>
             </div>

@@ -1,4 +1,6 @@
-﻿using Volunteering.Data;
+﻿using Data;
+using Service.Identity;
+
 
 namespace Volunteering.Service.Identity
 {
@@ -11,7 +13,7 @@ namespace Volunteering.Service.Identity
 
         public UserService()
         {
-            ApplicationUserStore store = new ApplicationUserStore(new AppContext());
+            ApplicationUserStore store = new ApplicationUserStore(new PiContext());
             UserManager = new ApplicationUserManager(store);
         }
 

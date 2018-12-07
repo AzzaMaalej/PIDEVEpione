@@ -175,6 +175,14 @@
     <Compile Include="Migrations\201811112217488_Creation_Disponibilities_version2.Designer.cs">
       <DependentUpon>201811112217488_Creation_Disponibilities_version2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811122106332_migApresLePull.cs" />
+    <Compile Include="Migrations\201811122106332_migApresLePull.Designer.cs">
+      <DependentUpon>201811122106332_migApresLePull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811131312201_ajoutIdDoctorDisponibilities.cs" />
+    <Compile Include="Migrations\201811131312201_ajoutIdDoctorDisponibilities.Designer.cs">
+      <DependentUpon>201811131312201_ajoutIdDoctorDisponibilities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PiContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +223,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811112217488_Creation_Disponibilities_version2.resx">
       <DependentUpon>201811112217488_Creation_Disponibilities_version2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811122106332_migApresLePull.resx">
+      <DependentUpon>201811122106332_migApresLePull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811131312201_ajoutIdDoctorDisponibilities.resx">
+      <DependentUpon>201811131312201_ajoutIdDoctorDisponibilities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

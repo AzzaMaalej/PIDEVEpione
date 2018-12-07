@@ -5,6 +5,7 @@ using System.Text;
 using Domain;
 using System.Threading.Tasks;
 using Data;
+using Service.Analytics;
 
 namespace GUI
 {
@@ -13,17 +14,14 @@ namespace GUI
 
         static void Main(string[] args)
         {
-            PiContext ctx = new PiContext();
-          /*  User u = new User { Email = "emel.garouachi@esprit.tn",
-             Password= "1234",
-            adress = "1 rue de sfax",
-            UserName="emel",
-            gender=Gender.
-            female,
-            lastName="Garouachi",
-            birthDate=DateTime.Now};*/
-        //    ctx.Users.Add(u);
-         //   ctx.SaveChanges();
+            ServiceDashboard2 sd = new ServiceDashboard2();
+            foreach (var item in sd.getAllPatientsNotTreatedByDoctor("83521291-6853-4672-ad39-2f58ae07244a"))
+            {
+                Console.WriteLine(item.FirstName);
+            }
+
+
+            Console.ReadKey();
         }
     }
 }

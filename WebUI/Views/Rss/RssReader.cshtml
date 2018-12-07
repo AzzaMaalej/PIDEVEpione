@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<WebUI.Models.Doctolib.Rss>
+
+@{
+    ViewBag.Title = "RssReader";
+    //Layout = "~/Views/Temp/_MyLayout.cshtml";
+    //Layout = "~/Views/Temp/_MyLogin.cshtml";
+}
+
+<h2>Flux RSS</h2>
+
+
+@using (Html.BeginForm())
+{
+
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+
+}
+<table id="results">
+    <tr>
+        <th>
+            First Name & last name
+        </th>
+        <th>
+            Acts
+        </th>
+        <th>
+          Create 
+        </th>
+        <th>
+            Details
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@item.Link" target="_blank">@Html.Encode(item.Title)</a>
+            </td>
+            <td>
+                @System.Web.HttpUtility.HtmlDecode(item.Description)
+
+            </td>
+            <td>
+                <a>@Html.ActionLink("  Add", "Create")</a>
+            </td>
+            <td>
+                <a href="@item.Link" target="_blank">More</a>
+            </td>
+        </tr>
+    }
+
+</table>
