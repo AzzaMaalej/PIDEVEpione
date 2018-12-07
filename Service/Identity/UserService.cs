@@ -1,4 +1,5 @@
-﻿using Volunteering.Data;
+﻿using Service.Identity;
+
 
 namespace Volunteering.Service.Identity
 {
@@ -7,13 +8,13 @@ namespace Volunteering.Service.Identity
 
     public class UserService
     {
-        public ApplicationUserManager UserManager { get; set; }
+    //    public ApplicationUserManager UserManager { get; set; }
 
-        public UserService()
-        {
-            ApplicationUserStore store = new ApplicationUserStore(new AppContext());
-            UserManager = new ApplicationUserManager(store);
-        }
+    //    public UserService()
+    //    {
+    //        ApplicationUserStore store = new ApplicationUserStore(new AppContext());
+    //        UserManager = new ApplicationUserManager(store);
+    //    }
 
 
 
