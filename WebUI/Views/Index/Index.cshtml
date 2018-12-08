@@ -489,9 +489,10 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="all_patients.html" class="nav-link ">
-                                        <span class="title">All Patients</span>
-                                    </a>
+                                  @Html.ActionLink("All Paths", "Index", "MedicalPath")
+                                </li>
+                                <li class="nav-item  ">
+                                    @Html.ActionLink("All Patients", "Index", "Patient")
                                 </li>
                                 @*<li class="nav-item  ">
                                     <a href="add_patient.html" class="nav-link ">
@@ -499,15 +500,15 @@
                                     </a>
                                 </li>*@
                                 <li class="nav-item  ">
+                                    @Html.ActionLink("Add Medical Path", "Create", "MedicalPath")
+                                </li>
+                                <li class="nav-item  ">
+
                                     <a href="add_patient_material.html" class="nav-link ">
                                         <span class="title">All Medical path</span>
                                     </a>
                                 </li>
-                                <li class="nav-item  ">
-                                    <a href="add_patient_material.html" class="nav-link ">
-                                        <span class="title">Add Medical path</span>
-                                    </a>
-                                </li>
+                                
                                 @*<li class="nav-item  ">
                                     <a href="edit_patient.html" class="nav-link ">
                                         <span class="title">Edit Patient</span>

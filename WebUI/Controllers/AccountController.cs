@@ -178,8 +178,9 @@ namespace WebUI.Controllers
 
                             };
 
-                            //v.Roles.Add();
-                            if (v.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
+
+                            if (model.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
+
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
@@ -219,7 +220,7 @@ namespace WebUI.Controllers
                                 Speciality = model.Speciality
 
                             };
-                            if (ngo.ImageName == null) { ngo.ImageName = "default-user-image.png"; }
+                            if (model.ImageName == null) { ngo.ImageName = "default-user-image.png"; }
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);

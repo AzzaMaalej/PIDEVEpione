@@ -21,8 +21,8 @@ namespace Data
         public DbSet<Repport> Repports { get; set; }
         public DbSet<Rate> Ratings { get; set; }
         public DbSet<Disponibility> Disponibilities { get; set; }
-        public DbSet<Question> Questions { get; set; }
-        public DbSet<Commentaire> Commentaires { get; set; }
+       // public DbSet<Question> Questions { get; set; }
+      //  public DbSet<Commentaire> Commentaires { get; set; }
 
 
         public static PiContext Create()

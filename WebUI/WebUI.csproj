@@ -235,9 +235,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Analytics\DashboardController.cs" />
+    <Compile Include="Controllers\Doctolib\RssController.cs" />
     <Compile Include="Controllers\EspaceMedecin\CalenderController.cs" />
     <Compile Include="Controllers\EspaceMedecin\MedecinController.cs" />
     <Compile Include="Controllers\EspaceMedecin\MedecinDashController.cs" />
+    <Compile Include="Controllers\EspacePatient\APIController.cs" />
     <Compile Include="Controllers\EspacePatient\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -253,6 +255,13 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="TemplateMasterPage.Master.cs">
+      <DependentUpon>TemplateMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TemplateMasterPage.Master.designer.cs">
+      <DependentUpon>TemplateMasterPage.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -493,6 +502,7 @@
     <Content Include="images\top-line.jpg" />
     <Content Include="images\tweet.png" />
     <Content Include="images\who.jpg" />
+    <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\cbpGridGallery.js" />
     <Content Include="js\classie.js" />
@@ -511,6 +521,8 @@
     <Content Include="js\numscroller-1.0.js" />
     <Content Include="js\pignose.layerslider.js" />
     <Content Include="js\tabs.js" />
+    <Content Include="login.html" />
+    <Content Include="register.html" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3559,11 +3571,12 @@
     <Content Include="Views\MedecinDash\DashboardMedecin.cshtml" />
     <Content Include="Views\MedecinDash\Edit.cshtml" />
     <Content Include="Views\Medecin\ViewDispo.cshtml" />
+    <Content Include="TemplateMasterPage.Master" />
+    <Content Include="Views\Appointment\IndexWS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Chat\" />
-    <Folder Include="Controllers\Doctolib\" />
     <Folder Include="Controllers\ParcoursPatient\" />
     <Folder Include="Models\Chat\" />
     <Folder Include="Models\Doctolib\" />
