@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class migApresLePull : IMigrationMetadata
+    public sealed partial class Modification_commentaire_et_repport : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migApresLePull));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Modification_commentaire_et_repport));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811122106332_migApresLePull"; }
+            get { return "201812072249403_Modification_commentaire_et_repport"; }
         }
         
         string IMigrationMetadata.Source

@@ -26,7 +26,7 @@ namespace WebUI.Controllers
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ServiceUser _userService = new ServiceUser();
+        private readonly ServicesUser _userService = new ServicesUser();
     
         public ApplicationSignInManager SignInManager
         {

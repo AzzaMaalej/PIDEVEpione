@@ -13,6 +13,7 @@ namespace Domain
         public int IdCommentaire { get; set; }
         public String LaCommentaire { get; set; }
         public Question Question { get; set; }
+        public User user { get; set; }
 
     }
 }

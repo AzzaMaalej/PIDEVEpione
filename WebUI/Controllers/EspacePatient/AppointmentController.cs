@@ -72,10 +72,10 @@ namespace WebUI.Controllers.EspacePatient
                     Location = am.Location,
                     DoctorId = am.Doctor.Id,
                     PatientId = currentUserId};
-                SA.AddAppointment(a);
-                SA.Commit();
+                    SA.AddAppointment(a);
+                    SA.Commit();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
             }
             catch
             {

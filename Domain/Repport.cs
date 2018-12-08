@@ -10,6 +10,7 @@ namespace Domain
     {
         public int RepportId { get; set; }
         public String ReppotName { get; set; }
+        public Doctor doctor { get; set; }
         //public virtual Course course { get; set; }
 
     }

@@ -30,7 +30,21 @@
 					backgroundColor: window.chartColors.green,
 					borderColor: window.chartColors.green,
 					data: repartitionArray,
-				}]
+			        }, 
+                {
+			    label: 'Untreated',
+			        fill: false,
+			        backgroundColor: window.chartColors.blue,
+			        borderColor: window.chartColors.blue,
+			        data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        
+                        ],
+			}]
 			},
 			options: {
 				responsive: true,
@@ -66,7 +80,7 @@
 		};
 
 		window.onload = function() {
-		    var ctx = document.getElementById('chartsjs_state').getContext('2d');
+		    var ctx = document.getElementById('chartsjs_state...').getContext('2d');
 			window.myLine = new Chart(ctx, config);
 		};
 </script>
@@ -75,8 +89,8 @@
 
 <script>
     var listStatesArray = @Html.Raw(Json.Encode(ViewBag.STATES));
-    var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITIONS));
-    var line = $("#chartsjs_state..");
+    var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITIONS2));
+    var line = $("#chartsjs_state");
     var lineChart = new Chart(line, {
 
         type:'bar',

@@ -1,56 +1,115 @@
-﻿<html>
-<head>
-    <script src="~/Scripts/Chart.min.js"></script>
-    <script src="~/Template/js/jquery-2.1.1.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <style>
-        #dfr{
-            width:400px;
-            height:400px;
-            border:1px dotted;
-            padding:1px;
-        }
-    </style>
-</head>
-<body>
-    <div id="dfr">
-        <canvas id="chartsjs_state"></canvas>
+﻿
+
+<div class="card card-box" style="height:350px;">
+    <div class="card-head">
+        <header>Patients Treated</header>
+        <div class="tools">
+            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+        </div>
     </div>
-    <script>
-        var listStatesArray = @Html.Raw(Json.Encode(ViewBag.STATES));
-        var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITIONS));
-        var line = $("#chartsjs_state");
-        var lineChart = new Chart(line, {
+    <div class="card-body no-padding height-9">
+        <div class="row">
+            <canvas id="chartsjs_state"></canvas>
+            @*<img alt="" class="" src=@Url.Content("/Content/Upload/user7.jpg") style="overflow:hidden" height="350px" />*@
+        </div>
+    </div>
+</div>
 
-            type:'line',
-            data:{
-                labels:listStatesArray,
-                datasets:[{
-                    fill:false,
-                    label:"Patient graph",
-                    data:repartitionArray,
-                    backgroundColor:["rgba(149,208,230,.7)","rgba(255,99,132,.7)","rgba(75,192,192,.7)","rgba(102,115,252,.7)"],
-                    borderColor:["rgb(149,208,230)","rgb(255,99,132)","rgb(75,192,192)","rgb(102,115,252)"],
-                    borderWidth:1,
-                }],
-            },
+<script>
+    var listStatesArray = @Html.Raw(Json.Encode(ViewBag.MONTHS));
+    var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITION));
+    var config = {
+			type: 'line',
+			data: {
+			    labels: listStatesArray,
+			        datasets: [{
+				    label: 'Treated',
+					fill: false,
+					backgroundColor: window.chartColors.green,
+					borderColor: window.chartColors.green,
+					data: repartitionArray,
+			        },
+                {
+			    label: 'Untreated',
+			        fill: false,
+			        backgroundColor: window.chartColors.blue,
+			        borderColor: window.chartColors.blue,
+			        data: repartitionArray,
+			}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Evolution of patient treatment by month'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Month'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}]
+				}
+			}
+		};
 
-            options:{
-                maintainAspectRatio:false,
-                scales:{
-                    yAxes:[{ticks:{beginAtZero:true},scaleLabel:{display:true, labelString:'Appointment State'} }], 
-                    xAxes:[{ticks:{beginAtZero:true},scaleLabel:{display:true, labelString:'Percentage'} }] 
+		window.onload = function() {
+		    var ctx = document.getElementById('chartsjs_state').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+</script>
+
+
+
+<script>
+    var listStatesArray = @Html.Raw(Json.Encode(ViewBag.STATES));
+    var repartitionArray = @Html.Raw(Json.Encode(ViewBag.REPARTITIONS));
+    var line = $("#chartsjs_state..");
+    var lineChart = new Chart(line, {
+
+        type:'bar',
+        data:{
+            labels:listStatesArray,
+            datasets:[{
+                label:"Patient graph",
+                data:repartitionArray,
+                backgroundColor:["rgba(149,208,230,.7)","rgba(255,99,132,.7)","rgba(75,192,192,.7)","rgba(102,115,252,.7)"],
+                borderColor:["rgb(149,208,230)","rgb(255,99,132)","rgb(75,192,192)","rgb(102,115,252)"],
+                borderWidth:2,
+            }],
         },
-                legend:{display:true}
+
+        options:{
+            maintainAspectRatio:false,
+            scales:{
+                xAxes:[{ticks:{beginAtZero:true} }],
+                yAxes:[{ticks:{beginAtZero:true} }]},
+            legend:{display:true}
         },
 
 
-        });
+    });
 
-    </script>
-</body>
-</html>
+</script>
 
 
 

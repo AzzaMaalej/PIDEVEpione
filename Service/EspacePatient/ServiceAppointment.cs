@@ -32,6 +32,5 @@ namespace Service.EspacePatient
             uof.getRepository<Appointment>().Add(ap);
         }
 
-
     }
 }

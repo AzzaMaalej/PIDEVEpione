@@ -7,7 +7,6 @@ using System.Web;
 
 namespace WebUI.Models.Analytics
 {
-    public enum Gender { male, female }
 
     public enum EAccountType
     {
@@ -35,7 +34,7 @@ namespace WebUI.Models.Analytics
         public DateTime BirthDate { get; set; }
         public String Address { get; set; }
         public String ImageName { get; set; }
-        public Gender? Gender { get; set; }
+        public String Gender { get; set; }
         public SpecialityEnum Speciality { get; set; }
     }
 }
