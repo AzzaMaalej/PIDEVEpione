@@ -57,34 +57,5 @@ namespace WebUI.Controllers.EspaceMedecin
             return View(dispo);
         }
 
-        // GET: Medecin/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: Medecin/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        // GET: Medecin/Edit/5
-
-        PiContext pi = new PiContext();
-        // POST: Medecin/Edit/5
-       
-        // GET: Medecin/Delete/5
-       
     }
 }

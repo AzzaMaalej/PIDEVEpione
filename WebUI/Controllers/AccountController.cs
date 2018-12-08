@@ -178,12 +178,9 @@ namespace WebUI.Controllers
 
                             };
 
-<<<<<<< HEAD
+
                             if (model.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
-=======
-                            //v.Roles.Add();
-                            if (v.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
->>>>>>> 72d741e6274731170a151ab0f08778010c53f879
+
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
