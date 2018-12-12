@@ -12,6 +12,7 @@ namespace Domain
         [Key]
         public int IdCommentaire { get; set; }
         public String LaCommentaire { get; set; }
+        public DateTime DateCommentaire { get; set; }
         public Question Question { get; set; }
         public User user { get; set; }
 

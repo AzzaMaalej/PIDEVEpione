@@ -10,9 +10,9 @@ namespace WebUI.Controllers.EspacePatient
 {
     public class PatientController : Controller
     {
-        ServiceMedicalPath sm = new ServiceMedicalPath();
+        IServiceMedicalPath sm = new ServiceMedicalPath();
         //ServiceSpeciality ss = new ServiceSpeciality();
-        ServicePatient sp = new ServicePatient();
+        IServiceProfil_Patient sp = new ServiceProfil_Patient();
         public ActionResult Index()
         {
             var patients = sp.GetMany();

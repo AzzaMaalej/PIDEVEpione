@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebUI.Models.Analytics;
+using WebUI.Models.EspacePatient;
 
 namespace WebUI.Controllers.Analytics
 {
@@ -16,12 +17,11 @@ namespace WebUI.Controllers.Analytics
 
         public ActionResult GetApps()
         {
-            var wsu = us.getAllAppointments();
+            var wsu = us.GetAll();
             IList<AppointmentModel> lis = new List<AppointmentModel>();
             foreach (var item in wsu)
             {
                 AppointmentModel ap = new AppointmentModel();
-                ap.AppointmentId = item.AppointmentId;
                 ap.Date = item.Date;
                 ap.Location = item.Location;
                 lis.Add(ap);

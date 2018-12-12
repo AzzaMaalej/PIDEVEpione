@@ -12,6 +12,7 @@ namespace Domain
         [Key]
         public int IdQuestion { get; set; }
         public String LaQuestion { get; set; }
+        public DateTime DateQuestion { get; set; }
         public Patient Patient { get; set; }
         public virtual ICollection<Commentaire> Commentaires { get; set; }
 

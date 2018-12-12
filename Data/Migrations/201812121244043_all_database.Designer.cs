@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ajoutIdDoctorDisponibilities : IMigrationMetadata
+    public sealed partial class all_database : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ajoutIdDoctorDisponibilities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(all_database));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811131312201_ajoutIdDoctorDisponibilities"; }
+            get { return "201812121244043_all_database"; }
         }
         
         string IMigrationMetadata.Source

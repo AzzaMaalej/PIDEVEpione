@@ -19,7 +19,6 @@ namespace WebUI.Models
             public DateTime BirthDate { get; set; }
             public String Address { get; set; }
             public Gender Gender { get; set; }
-            [Required(ErrorMessage = "Please choose a valid image.")]
             public String ImageName { get; set; }
             [Required(ErrorMessage = "Email required. Please enter an email.")]
             [EmailAddress(ErrorMessage = "Please enter a valid email. the email must be like \"abc@abc.com\"")]

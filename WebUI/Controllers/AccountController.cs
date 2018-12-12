@@ -178,10 +178,6 @@ namespace WebUI.Controllers
 
                             };
 
-
-                            if (model.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
-
-
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
 
@@ -218,9 +214,9 @@ namespace WebUI.Controllers
                                 PhoneNumber = model.PhoneNumber,
                                 Gender = model.Gender,
                                 Speciality = model.Speciality
+                                
 
                             };
-                            if (model.ImageName == null) { ngo.ImageName = "default-user-image.png"; }
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);

@@ -13,7 +13,7 @@ namespace WebUI.Models
     public class MedicalPathViewModel
     {
         [Key]
-
+        [ForeignKey("Patient")]
         public String PathId { get; set; }
         public string RecommendedSpeciality { get; set; }
         public bool ValidatedSteps { get; set; }
@@ -21,6 +21,7 @@ namespace WebUI.Models
         public string Description { get; set; }
         [DataType(DataType.Date)]
         public DateTime RecommandationDate { get; set; }
+        public virtual Patient Patient { get; set; }
         public virtual ICollection<Doctor> Doctors { get; set; }
     }
 }
