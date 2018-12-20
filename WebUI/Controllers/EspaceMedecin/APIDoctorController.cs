@@ -8,76 +8,175 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace WebUI.Controllers.EspaceMedecin
 {
-    public class APIDoctorController : ApiController
+    public class APIDoctorController : Controller
     {
         // GET: APIDoctor
 
         ServiceMedecin ds = new ServiceMedecin();
 
             PiContext db = new PiContext();
-           
-
-            [Route("api/doctorsList")]
-            [HttpGet]
-            public IHttpActionResult Index()
+       
+        public ActionResult GetDoctors()
+        {
+            IList<Doctor> lcm = new List<Doctor>();
+            foreach (var item in ds.GetMany())
             {
-              
-                var sk = ds.GetMany();
-                return Ok(sk);
+                Doctor cm = new Doctor();
+                cm.Id = item.Id;
+                cm.LastName = item.LastName;
+                cm.FirstName = item.FirstName;
+                cm.UserName = item.UserName;
+                cm.Email = item.Email;
+                cm.PhoneNumber = item.PhoneNumber;
+                cm.UserName = item.UserName;
+                cm.BirthDate = item.BirthDate;
+                cm.Gender = item.Gender;
+                cm.Address = item.Address;
+                cm.ImageName = item.ImageName;
+                lcm.Add(cm);
             }
 
-            [Route("api/docteurDetails/{id}")]
-            [HttpGet]
-            public IHttpActionResult Details(String id)
-            {
+            return Json(lcm, JsonRequestBehavior.AllowGet);
+
+
+        }
+       
+        public ActionResult DoctorDetails(String id)
+        {
             Doctor sk = ds.GetById(id);
-                //  var sk = ds.GetById(id);
-                return Ok(sk);
+            IList<Doctor> lcm = new List<Doctor>();
+            lcm.Add(sk);
 
-            }
+            //  var sk = ds.GetById(id);
+            return Json(lcm, JsonRequestBehavior.AllowGet);
 
-            [Route("api/doctorDel/{id}")]
-            [HttpPost]
-            public IHttpActionResult Delete(String id, Doctor d)
+        }
+
+       
+        public ActionResult DoctorSearch(string SearchString)
+        {         
+            IList<Doctor> lcm = new List<Doctor>();
+            foreach (var item in ds.GetMany(p => p.Address.Contains(SearchString)))
             {
-
-                var req = ds.GetMany().Where(a => a.Id.Equals(id)).FirstOrDefault();
-                ds.Delete(req);
-                ds.Commit();
-                return Ok();
+                Doctor cm = new Doctor();
+                cm.Id = item.Id;
+                cm.LastName = item.LastName;
+                cm.FirstName = item.FirstName;
+                cm.UserName = item.UserName;
+                cm.Email = item.Email;
+                cm.PhoneNumber = item.PhoneNumber;
+                cm.UserName = item.UserName;
+                cm.BirthDate = item.BirthDate;
+                cm.Gender = item.Gender;
+                cm.Address = item.Address;
+                cm.ImageName = item.ImageName;
+                lcm.Add(cm);
             }
 
-            [Route("api/doctorSearch/{SearchString}")]
-            [HttpPost]
-            public IHttpActionResult Index(string SearchString)
-            {
-            
-                var medecin2 = ds.GetMany(p => p.Address.Contains(SearchString));
-                return Ok(medecin2);
-            }
+            return Json(lcm);
+
+        }
+
         ServiceDisponibility sd = new ServiceDisponibility();
-        [Route("api/dispoByDoctor/{id}")]
-        [HttpPost]
-        public IHttpActionResult ViewDispo(String id)
+       
+        public ActionResult ViewDispo(String id)
         {
-            var dispo = sd.geDispoByDoctorId(id);
-
-            return Ok(dispo);
+            
+            IList<Disponibility> lcm = new List<Disponibility>();
+            foreach (var item in sd.geDispoByDoctorId(id))
+            {
+                Disponibility cm = new Disponibility();
+                cm.Description = item.Description;
+                cm.StartDate = item.StartDate;
+                cm.EndDate = item.EndDate;
+                cm.Doctor = item.Doctor;
+                lcm.Add(cm);
+            }
+            return Json(lcm);
         }
 
-        [Route("api/docteurDash")]
-        [HttpGet]
-        public IHttpActionResult DashboardMedecin()
-        {
-            var medecin = ds.getDoctorByUserName(AccountController.UserCoUserName);
+        //[Route("api/doctorsList")]
+        //    [HttpGet]
+        //    public IHttpActionResult Index()
+        //    {
 
-            return Ok(medecin);
+        //        //var sk = ds.GetMany();
+        //    IList<Doctor> lcm = new List<Doctor>();
+        //    foreach (var item in ds.GetMany())
+        //    {
+        //        Doctor cm = new Doctor();
+        //        cm.Id = item.Id;
+        //        cm.FirstName = item.FirstName;
+        //        cm.Email = item.Email;
+        //        cm.PhoneNumber = item.PhoneNumber;
+        //        cm.UserName = item.UserName;
+        //        cm.BirthDate = item.BirthDate;
+        //        cm.Gender = item.Gender;
+        //        cm.Address = item.Address;
+        //        cm.ImageName = item.ImageName;
+        //        lcm.Add(cm);
+        //    }
+        //    return Ok(lcm);
+        //  //  return Json(sk);
+        //}
 
-        }
-        PiContext pi = new PiContext();
+        //    [Route("api/docteurDetails/{id}")]
+        //    [HttpGet]
+        //    public IHttpActionResult Details(String id)
+        //    {
+        //    Doctor sk = ds.GetById(id);
+
+        //        //  var sk = ds.GetById(id);
+        //        return Ok(sk);
+
+        //    }
+
+        //    [Route("api/doctorDel/{id}")]
+        //    [HttpPost]
+        //    public IHttpActionResult Delete(String id, Doctor d)
+        //    {
+
+        //        var req = ds.GetMany().Where(a => a.Id.Equals(id)).FirstOrDefault();
+        //        ds.Delete(req);
+        //        ds.Commit();
+        //        return Ok();
+        //    }
+
+        //    [Route("api/doctorSearch/{SearchString}")]
+        //    [HttpPost]
+        //    public IHttpActionResult Index(string SearchString)
+        //    {
+
+        //        var medecin2 = ds.GetMany(p => p.Address.Contains(SearchString));
+        //        return Ok(medecin2);
+        //    }
+        //ServiceDisponibility sd = new ServiceDisponibility();
+        //[Route("api/dispoByDoctor/{id}")]
+        //[HttpPost]
+        //public IHttpActionResult ViewDispo(String id)
+        //{
+        //    var dispo = sd.geDispoByDoctorId(id);
+
+        //    return Ok(dispo);
+        //}
+
+        //[Route("api/docteurDash")]
+        //[HttpGet]
+        //public IHttpActionResult DashboardMedecin()
+        //{
+        //    var medecin = ds.getDoctorByUserName(AccountController.UserCoUserName);
+
+        //    return Ok(medecin);
+
+        //}
+        //PiContext pi = new PiContext();
+
+
+
         //[Route("api/docteurDash")]
         //[HttpPost]
         //public IHttpActionResult Edit([System.Web.Mvc.Bind(Include = "Id,Email,SecurityStamp,PhoneNumber, LockoutEndDateUtc,AccessFailedCount,UserName, FirstName,LastName,birthDate,Address,ImageName,Gender,Speciality")] Doctor d, HttpPostedFileBase Image)
@@ -107,5 +206,5 @@ namespace WebUI.Controllers.EspaceMedecin
 
         //}
     }
-    }
+}
 
