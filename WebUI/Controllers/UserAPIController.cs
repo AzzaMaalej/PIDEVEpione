@@ -19,7 +19,9 @@ namespace WebUI.Controllers
         UserManager<User, string> _userManager = new UserManager<User, string>(new ApplicationUserStore(new PiContext()));
 
         // GET: api/UserAPI
-        public IHttpActionResult Get()
+        [Route("api/users")]
+        [HttpGet]
+        public IHttpActionResult AllUsersGet()
         {
             IList<UserModel> lcm = new List<UserModel>();
             foreach (var item in us.getAll())
@@ -45,9 +47,21 @@ namespace WebUI.Controllers
         }
 
         // GET: api/UserAPI/5
-        public string Get(int id)
+        public IHttpActionResult Get(string id)
         {
-            return "value";
+            User item = us.getOne(id);
+            UserModel cm = new UserModel();
+            cm.Id = item.Id;
+            cm.FirstName = item.FirstName;
+            cm.Email = item.Email;
+            cm.PhoneNumber = item.PhoneNumber;
+            cm.UserName = item.UserName;
+            cm.BirthDate = item.BirthDate;
+            cm.Gender = item.Gender.Value.ToString();
+            cm.Address = item.Address;
+            cm.ImageName = item.ImageName;
+
+            return Ok(cm);
         }
 
         // POST: api/UserAPI

@@ -24,6 +24,10 @@ namespace Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Commentaire> Commentaires { get; set; }
         public DbSet<Reason> Reasons { get; set; }
+        public DbSet<MedicalOffice> MedicalOffices { get; set; }
+        public DbSet<MedicalCare> MedicalCares { get; set; }
+        public DbSet<Asset> Assets { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
 
         public static PiContext Create()
