@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
+
 
 namespace WebUI.Controllers
 {
@@ -16,35 +16,48 @@ namespace WebUI.Controllers
     {
        
         ServiceAppointment sp = new ServiceAppointment();
-
-        [System.Web.Http.HttpGet]
-       // [System.Web.Http.Route("API/AffichageaPP")]
-        public IHttpActionResult AffichageaPP()
+        [Route("API/AppointmentsList")]
+        [HttpGet]
+      
+        public IHttpActionResult Index()
         {
 
-            List<Appointment> lists = new List<Appointment>();
-            foreach (var item in sp.GetAll())
-            {
-                Appointment appointement = new Appointment();
-                appointement.Date = item.Date;
-                appointement.Location = item.Location;
-                appointement.PatientId = item.PatientId;
-                appointement.DoctorId = item.DoctorId;
-                appointement.AppointmentState = item.AppointmentState;
-                appointement.Specialities = item.Specialities;
-                lists.Add(appointement);
+            var ap = sp.GetMany();
+            return Ok(ap);
 
-            }
-
-            try
-            {
-                // TODO: Add insert logic here
-                return Ok(lists);
-            }
-            catch
-            {
-                return Ok();
-            }
         }
+        [Route("api/appointmentDetails/{id}")]
+        [HttpGet]
+        public IHttpActionResult Details(String id)
+        {
+            Appointment ap = sp.GetById(id);
+           
+            return Ok(ap);
+
+        }
+        [Route("api/appointmentAdd")]
+        [HttpGet]
+        public IHttpActionResult Add(Appointment ap)
+        {
+                 sp.Add(ap);
+
+            return Ok();
+
+        }
+
+        [Route("api/appointmentDelete/{id}")]
+        [HttpPost]
+        public IHttpActionResult Delete(String id, Appointment a)
+        {
+
+            var req = sp.GetMany().Where(b => b.AppointmentId.Equals(id)).FirstOrDefault();
+            sp.Delete(req);
+            sp.Commit();
+            return Ok();
+        }
+
+       
+
     }
-}
+    }
+

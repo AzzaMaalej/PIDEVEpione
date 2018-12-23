@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace WebUI.Controllers.EspacePatient
 {
-    [Authorize]
+    //[Authorize]
     public class AppointmentController : Controller
     {
         ServiceAppointment SA = new ServiceAppointment();
