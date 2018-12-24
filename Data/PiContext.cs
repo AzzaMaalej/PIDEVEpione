@@ -21,8 +21,14 @@ namespace Data
         public DbSet<Repport> Repports { get; set; }
         public DbSet<Rate> Ratings { get; set; }
         public DbSet<Disponibility> Disponibilities { get; set; }
+<<<<<<< HEAD
         //public DbSet<Question> Questions { get; set; }
         //public DbSet<Commentaire> Commentaires { get; set; }
+=======
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Commentaire> Commentaires { get; set; }
+        public DbSet<Reason> Reasons { get; set; }
+>>>>>>> parent of 4036295... Merge branch 'master' of https://github.com/AzzaMaalej/PIDEVEpione
 
 
         public static PiContext Create()
