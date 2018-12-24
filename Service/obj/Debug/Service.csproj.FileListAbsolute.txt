@@ -269,3 +269,6 @@ C:\Users\HP\PIDEV\PIDEVEpione\Service\bin\Debug\fr\System.Web.WebPages.Deploymen
 C:\Users\HP\PIDEV\PIDEVEpione\Service\bin\Debug\DHTMLX.dll
 C:\Users\HP\PIDEV\PIDEVEpione\Service\bin\Debug\DHTMLX.pdb
 C:\Users\HP\PIDEV\PIDEVEpione\Service\bin\Debug\DHTMLX.xml
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\Service\obj\Debug\Service.dll
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\Service\obj\Debug\Service.pdb

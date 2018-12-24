@@ -587,3 +587,6 @@ C:\Users\ivano\Desktop\Phase-1---Dot-Net_complete\Phase-1---Dot-Net\WebUI\bin\fr
 C:\Users\ivano\Desktop\Phase-1---Dot-Net_complete\Phase-1---Dot-Net\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
 C:\Users\ivano\Desktop\Phase-1---Dot-Net_complete\Phase-1---Dot-Net\WebUI\obj\Debug\WebUI.dll
 C:\Users\ivano\Desktop\Phase-1---Dot-Net_complete\Phase-1---Dot-Net\WebUI\obj\Debug\WebUI.pdb
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\WebUI\obj\Debug\WebUI.dll
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\WebUI\obj\Debug\WebUI.pdb
