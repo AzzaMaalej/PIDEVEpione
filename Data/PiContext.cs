@@ -29,6 +29,9 @@ namespace Data
         public DbSet<Commentaire> Commentaires { get; set; }
         public DbSet<Reason> Reasons { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 4036295... Merge branch 'master' of https://github.com/AzzaMaalej/PIDEVEpione
+=======
 >>>>>>> parent of 4036295... Merge branch 'master' of https://github.com/AzzaMaalej/PIDEVEpione
 =======
 >>>>>>> parent of 4036295... Merge branch 'master' of https://github.com/AzzaMaalej/PIDEVEpione
