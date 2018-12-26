@@ -12,6 +12,5 @@ namespace Service.Analytics
     {
         IEnumerable<Appointment> getAllAppointments();
         IEnumerable<Appointment> getAllAppointmentsByDoctor(string doctorId);
-        IEnumerable<Appointment> getAllAppointmentsCanceledByDoctor(string doctorId);
     }
 }

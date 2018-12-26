@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace WebUI.Controllers.EspacePatient
 {
-    [Authorize]
+    //[Authorize]
     public class AppointmentController : Controller
     {
         ServiceAppointment SA = new ServiceAppointment();
@@ -77,10 +77,10 @@ namespace WebUI.Controllers.EspacePatient
                     Location = am.Location,
                     DoctorId = am.Doctor.Id,
                     PatientId = currentUserId};
-                    SA.AddAppointment(a);
-                    SA.Commit();
+                SA.AddAppointment(a);
+                SA.Commit();
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch
             {

@@ -120,7 +120,9 @@
     <Compile Include="EspacePatient\ServiceProfil_Patient.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Identity\IServicesUser.cs" />
     <Compile Include="Identity\IServiceUser.cs" />
+    <Compile Include="Identity\ServicesUser.cs" />
     <Compile Include="Identity\UserService.cs" />
     <Compile Include="IserviceDoctor.cs" />
     <Compile Include="IServiceUser.cs" />

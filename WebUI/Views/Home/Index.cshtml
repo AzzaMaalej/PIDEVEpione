@@ -89,7 +89,7 @@
         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
             <ul class="nav navbar-nav nav_1">
                 <li class="current_page"><a href=@Url.Content("/Home/Index")>Home</a></li>
-                <li><a href=@Url.Content("/Medecin/Index")>Doctor</a></li>
+                <li><a href=@Url.Content("/Medecin/Index")>Medecin</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab<span class="caret"></span></a>
                     <ul class="dropdown-menu drop_menu" role="menu">
@@ -100,13 +100,19 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appointments<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book Test<span class="caret"></span></a>
                     <ul class="dropdown-menu drop_menu" role="menu">
-                        <li><a href=@Url.Content("/Appointment/Create")>New Appointment</a></li>
-                        <li><a href=@Url.Content("/Appointment/Index")>My Appointments</a></li>
+                        <li><a href="#">Book a Test</a></li>
+                        <li><a href="#">Test Menu</a></li>
                     </ul>
                 </li>
-                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opportunity<span class="caret"></span></a>
+                    <ul class="dropdown-menu drop_menu" role="menu">
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Franchisee</a></li>
+                    </ul>
+                </li>
                 @if (Request.IsAuthenticated)
                 {
                     <li id="hideMenu"><a href=@Url.Content("/Dashboard/Index")>Dashboard</a></li> 
@@ -129,8 +135,8 @@
             <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                 <div class="sl-slide-inner">
                     <div class="bg-img bg-img-1"></div>
-                    <h3>Welcome to our website</h3>
-                    <blockquote><p>Our profession is the only one which works unceasingly to annihilate itself.</p><cite>Martin H. Fischer</cite></blockquote>
+                    <h3>A bene placito.</h3>
+                    <blockquote><p>You have just dined, and however scrupulously the slaughterhouse is concealed in the graceful distance of miles, there is complicity.</p><cite>Ralph Waldo Emerson</cite></blockquote>
                 </div>
             </div>
 

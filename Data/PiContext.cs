@@ -9,7 +9,7 @@ namespace Data
     public class PiContext : IdentityDbContext<User>
     {
         
-        public PiContext() : base("PIDB")
+        public PiContext() : base("pidb")
         {
             Database.SetInitializer(new ContexInit());
         }
@@ -21,13 +21,13 @@ namespace Data
         public DbSet<Repport> Repports { get; set; }
         public DbSet<Rate> Ratings { get; set; }
         public DbSet<Disponibility> Disponibilities { get; set; }
-        public DbSet<Question> Questions { get; set; }
-        public DbSet<Commentaire> Commentaires { get; set; }
-        public DbSet<Reason> Reasons { get; set; }
-        public DbSet<MedicalOffice> MedicalOffices { get; set; }
-        public DbSet<MedicalCare> MedicalCares { get; set; }
-        public DbSet<Asset> Assets { get; set; }
-        public DbSet<Employee> Employees { get; set; }
+
+        //public DbSet<Question> Questions { get; set; }
+        //public DbSet<Commentaire> Commentaires { get; set; }
+
+        //public DbSet<Question> Questions { get; set; }
+        //public DbSet<Commentaire> Commentaires { get; set; }
+        //public DbSet<Reason> Reasons { get; set; }
 
 
         public static PiContext Create()

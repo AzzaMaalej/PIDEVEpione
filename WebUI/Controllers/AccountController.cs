@@ -26,7 +26,7 @@ namespace WebUI.Controllers
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ServicesUser _userService = new ServicesUser();
+        private readonly ServiceUser _userService = new ServiceUser();
     
         public ApplicationSignInManager SignInManager
         {
@@ -178,6 +178,9 @@ namespace WebUI.Controllers
 
                             };
 
+                            //v.Roles.Add();
+                            if (v.ImageName == null) { v.ImageName = "default-user-image.png"; }                      
+
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);
 
@@ -214,9 +217,9 @@ namespace WebUI.Controllers
                                 PhoneNumber = model.PhoneNumber,
                                 Gender = model.Gender,
                                 Speciality = model.Speciality
-                                
 
                             };
+                            if (ngo.ImageName == null) { ngo.ImageName = "default-user-image.png"; }
 
                             var path = Path.Combine(Server.MapPath("~/Content/Upload/"), Image.FileName);
                             Image.SaveAs(path);

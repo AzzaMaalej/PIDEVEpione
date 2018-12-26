@@ -48,10 +48,5 @@ namespace ServicePattern
             return GetMany();
         }
 
-        public User getOne(String id)
-        {
-            return Get(c => c.Id.Equals(id));
-        }
-
     }
 }

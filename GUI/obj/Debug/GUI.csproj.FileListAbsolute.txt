@@ -218,3 +218,7 @@ C:\Users\HP\PIDEV\PIDEVEpione\GUI\bin\Debug\fr\Microsoft.AspNet.Identity.Owin.re
 C:\Users\HP\PIDEV\PIDEVEpione\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
 C:\Users\HP\PIDEV\PIDEVEpione\GUI\obj\Debug\GUI.exe
 C:\Users\HP\PIDEV\PIDEVEpione\GUI\obj\Debug\GUI.pdb
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\GUI\obj\Debug\GUI.exe
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\GUI\obj\Debug\GUI.pdb
+C:\Users\sirin\OneDrive\Documents\GitHub\PIDEVEpione\GUI\bin\Debug\GUI.exe.config
