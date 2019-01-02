@@ -19,9 +19,7 @@ namespace WebUI.Controllers
         UserManager<User, string> _userManager = new UserManager<User, string>(new ApplicationUserStore(new PiContext()));
 
         // GET: api/UserAPI
-        [Route("api/users")]
-        [HttpGet]
-        public IHttpActionResult AllUsersGet()
+        public IHttpActionResult Get()
         {
             IList<UserModel> lcm = new List<UserModel>();
             foreach (var item in us.getAll())
@@ -33,7 +31,7 @@ namespace WebUI.Controllers
                 cm.PhoneNumber = item.PhoneNumber;
                 cm.UserName = item.UserName;
                 cm.BirthDate = item.BirthDate;
-                cm.Gender = item.Gender.Value.ToString();
+                //cm.Gender = item.Gender.Value.ToString();
                 cm.Address = item.Address;
                 cm.ImageName = item.ImageName;
                 lcm.Add(cm);
@@ -49,7 +47,7 @@ namespace WebUI.Controllers
         // GET: api/UserAPI/5
         public IHttpActionResult Get(string id)
         {
-            User item = us.getOne(id);
+            User item = us.GetById(id);
             UserModel cm = new UserModel();
             cm.Id = item.Id;
             cm.FirstName = item.FirstName;
@@ -57,10 +55,9 @@ namespace WebUI.Controllers
             cm.PhoneNumber = item.PhoneNumber;
             cm.UserName = item.UserName;
             cm.BirthDate = item.BirthDate;
-            cm.Gender = item.Gender.Value.ToString();
+            //cm.Gender = item.Gender.Value.ToString();
             cm.Address = item.Address;
             cm.ImageName = item.ImageName;
-
             return Ok(cm);
         }
 

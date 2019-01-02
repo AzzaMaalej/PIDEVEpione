@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    interface IServiceUser : IService<User>
+    public interface IServiceUser : IService<User>
     {
         bool checkUserByRole(User us);
     }

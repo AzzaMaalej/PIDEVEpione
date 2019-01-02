@@ -21,7 +21,6 @@ namespace WebUI.Controllers.Analytics
             var medecin = sd.getDoctorByName(AccountController.UserCoUserName);
             var listAppointments = sd3.getAllAppointmentsByDoctor(medecin.Id);
             List<double> nberAppointments = new List<double>();
-            List<int> nberAppointments2 = new List<int>();
             double nberAppointmentsCanceled = new double();
             var appointment_states = listAppointments.Select(a => a.AppointmentState).Distinct();
             var appointment_statesInString = new List<string>();
@@ -33,9 +32,7 @@ namespace WebUI.Controllers.Analytics
             foreach (var item in appointment_states)
             {
                 //nberAppointments.Add(((listAppointments.Count(x => x.AppointmentState == item))*100/listAppointments.Count()));
-                int res2 = (listAppointments.Count(x => x.AppointmentState == item));
-                double res = res2 * 100 / listAppointments.Count();
-                nberAppointments2.Add(res2);
+                double res = (listAppointments.Count(x => x.AppointmentState == item)) * 100 / listAppointments.Count();
                 double nber = Math.Round(res, 1);
                 nberAppointments.Add(nber);
                 if (item == Domain.StateEnum.Cancelled)
@@ -43,22 +40,9 @@ namespace WebUI.Controllers.Analytics
             }
 
             var finalRepartitionsByAppointment = nberAppointments;
-            var finalRepartitionsByAppointment2 = nberAppointments2;
-            var listPatients = sd2.getAllPatientsTreatedByDoctor(medecin.Id);
-            var listPatients2 = sd2.getAllPatientsNotTreatedByDoctor(medecin.Id);
-            var rdvCanceled = sd3.getAllAppointmentsCanceledByDoctor(medecin.Id).Count();
-            var nbrePT = listPatients.Count();
-            var nbrePNT = listPatients2.Count();
-            var percentage = nbrePT*100/(nbrePT+nbrePNT);
-
             ViewBag.STATES = appointment_statesInString;
             ViewBag.REPARTITIONS = finalRepartitionsByAppointment.ToList();
-            ViewBag.REPARTITIONS2 = finalRepartitionsByAppointment2.ToList();
-            ViewBag.NBERPATIENT = nbrePT;
-            ViewBag.RATIO = percentage;
             ViewBag.CANCELED = nberAppointmentsCanceled;
-            ViewBag.RDV_CANCELED = rdvCanceled;
-
             return View(medecin);
         }
 

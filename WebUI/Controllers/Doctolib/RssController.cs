@@ -16,10 +16,10 @@ namespace WebUI.Controllers.Doctolib
         {
             return View();
         }
-        public ActionResult RssReader()
-        {
-            return View(WebUI.Models.Doctolib.RssReader.GetRssFeed());
-        }
+        //public ActionResult RssReader()
+        //{
+        //    return View(WebUI.Models.Doctolib.RssReader.GetRssFeed());
+        //}
        
     }
 }

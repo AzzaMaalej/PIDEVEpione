@@ -66,15 +66,7 @@ namespace WebUI.Controllers.EspaceMedecin
                 var doctor = sm.GetMany().Single(em => em.Id == d.Id);
                 d.PasswordHash = doctor.PasswordHash;
                 d.SecurityStamp = doctor.SecurityStamp;
-                d.UserName = d.UserName;
-                d.FirstName = d.FirstName;
-                d.LastName = d.LastName;
-                d.Gender = d.Gender;
-                d.Speciality = d.Speciality;
-                d.BirthDate = d.BirthDate;
-                d.Address = d.Address;
-                d.Email = d.Email;
-                d.PhoneNumber = d.PhoneNumber;
+               
                 pi.Entry(d).State = EntityState.Modified;
                 pi.SaveChanges();
                

@@ -11,7 +11,5 @@ namespace Service
     public interface IServicesUser : IService<User>
     {
         IEnumerable<User> getAll();
-        User getOne(string id);
     }
-
 }

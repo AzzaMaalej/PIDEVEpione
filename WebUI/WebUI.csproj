@@ -236,12 +236,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Analytics\DashboardController.cs" />
     <Compile Include="Controllers\Doctolib\RssController.cs" />
+    <Compile Include="Controllers\EspaceMedecin\APIDoctorController.cs" />
     <Compile Include="Controllers\EspaceMedecin\CalenderController.cs" />
     <Compile Include="Controllers\EspaceMedecin\MedecinController.cs" />
     <Compile Include="Controllers\EspaceMedecin\MedecinDashController.cs" />
     <Compile Include="Controllers\EspacePatient\APIController.cs" />
     <Compile Include="Controllers\EspacePatient\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserAPIController.cs" />
+    <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
