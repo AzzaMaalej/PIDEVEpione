@@ -1,5 +1,7 @@
 ﻿using Data;
 using Domain;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Service.EspaceMedecin;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -37,14 +40,17 @@ namespace WebUI.Controllers.EspaceMedecin
                 cm.Gender = item.Gender;
                 cm.Address = item.Address;
                 cm.ImageName = item.ImageName;
+                cm.Speciality = item.Speciality;
+                
                 lcm.Add(cm);
+               
             }
-
+           
             return Json(lcm, JsonRequestBehavior.AllowGet);
 
 
         }
-       
+     
         public ActionResult DoctorDetails(String id)
         {
             Doctor sk = ds.GetById(id);
@@ -69,8 +75,7 @@ namespace WebUI.Controllers.EspaceMedecin
                 cm.UserName = item.UserName;
                 cm.Email = item.Email;
                 cm.PhoneNumber = item.PhoneNumber;
-                cm.UserName = item.UserName;
-                cm.BirthDate = item.BirthDate;
+                cm.UserName = item.UserName;             
                 cm.Gender = item.Gender;
                 cm.Address = item.Address;
                 cm.ImageName = item.ImageName;
